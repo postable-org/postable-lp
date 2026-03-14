@@ -1,0 +1,304 @@
+---
+description: Architecture Rules and Component Structure - Atomic Design
+globs: src/components/**/*.*, src/pages/**/*.*, src/layouts/**/*.*
+alwaysApply: true
+---
+
+# 🏗️ Component Architecture - Atomic Design
+
+This project uses **Atomic Design** to organize all React components and UI structure. Each component must be classified into an atomic level with well-defined responsibilities and dependencies.
+
+---
+
+## ⚛️ The 5 Levels of Atomic Design
+
+### 1. ⚛️ Atoms
+**The smallest building blocks of the interface.**
+
+- **What they are:** Components that cannot be broken down into smaller parts without losing functional meaning.
+- **Responsibility:** Pure presentation, no business logic.
+- **Dependencies:** ❌ Zero dependencies on other project components. Only props, styles, and types.
+- **Examples:** `Button`, `Input`, `Label`, `Icon`, `Typography`, `Badge`, `Spinner`
+- **Pattern:** Always accept props for customization (variants, sizes, states)
+- **Path:** `src/components/atoms/`
+
+**Example:**
+```typescript
+interface ButtonProps {
+  variant: 'primary' | 'secondary';
+  size: 'sm' | 'md' | 'lg';
+  disabled?: boolean;
+  children: ReactNode;
+}
+export const Button = ({ variant, size, disabled, children }: ButtonProps) => { }
+```
+
+---
+
+### 2. 🧬 Molecules
+**Simple functional groups of atoms that create a UI unit.**
+
+- **What they are:** Compositions of atoms that solve a simple UI problem.
+- **Responsibility:** Creating a functional block (e.g., search field, card with header, simple form).
+- **Dependencies:** ✅ ONLY Atoms. ❌ Never import Molecules, Organisms, or Templates.
+- **Examples:** `SearchField` (Input + Button), `CardHeader` (Avatar + Title), `FormField` (Label + Input + Error)
+- **Pattern:** May contain simple local logic (input validation, local UI state)
+- **Path:** `src/components/molecules/`
+
+**Example:**
+```typescript
+export const FormField = ({ label, error, ...inputProps }: FormFieldProps) => (
+  <div>
+    <Label>{label}</Label>
+    <Input {...inputProps} />
+    {error && <ErrorMessage>{error}</ErrorMessage>}
+  </div>
+)
+```
+
+---
+
+### 3. 🦠 Organisms
+**Complex components that form independent sections of the interface.**
+
+- **What they are:** Larger blocks that combine molecules, atoms, and other small organisms.
+- **Responsibility:** Managing distinct visual contexts with possible local logic.
+- **Dependencies:** ✅ Atoms, Molecules, and Organisms. ❌ Never import Templates or Pages.
+- **Examples:** `Header`, `Sidebar`, `ProductCard`, `LoginForm`, `Navigation`, `Footer`, `HeroSection`
+- **Pattern:** Can manage local state, event handlers, but avoid direct API calls
+- **Path:** `src/components/organisms/`
+
+**Example:**
+```typescript
+export const LoginForm = ({ onSubmit }: LoginFormProps) => {
+  const [email, setEmail] = useState('');
+  const [error, setError] = useState('');
+  
+  return (
+    <form onSubmit={(e) => { e.preventDefault(); onSubmit(email); }}>
+      <FormField label="Email" value={email} onChange={setEmail} error={error} />
+      <Button type="submit">Login</Button>
+    </form>
+  )
+}
+```
+
+---
+
+### 4. 📐 Templates
+**Layout structures that define the grid and positioning of organisms.**
+
+- **What they are:** Components that articulate the visual structure of a page.
+- **Responsibility:** Arranging elements on the screen without specific content (pure layout).
+- **Dependencies:** ✅ Organisms, Molecules, Atoms. ❌ Avoid complex business logic or API calls.
+- **Examples:** `DashboardLayout`, `AuthTemplate`, `BlogPostTemplate`, `LandingPageGrid`
+- **Pattern:** Receive `children` or slots for specific content
+- **Path:** `src/components/templates/` or `src/layouts/`
+
+**Example:**
+```typescript
+export const DashboardLayout = ({ sidebar, header, children }: TemplateProps) => (
+  <div className="dashboard">
+    <header>{header}</header>
+    <aside>{sidebar}</aside>
+    <main>{children}</main>
+  </div>
+)
+```
+
+---
+
+### 5. 📄 Pages
+**Concrete instances with real content and application logic.**
+
+- **What they are:** Route/page-specific components with real data.
+- **Responsibility:** Routing, API calls, global state (Context/Redux), passing data to templates/organisms.
+- **Dependencies:** ✅ Anything below (Templates, Organisms, etc.).
+- **Examples:** `HomePage`, `DashboardPage`, `ProductDetailPage`, `AuthPage`
+- **Pattern:** This is where business logic, data integration, and API calls live
+- **Path:** `src/pages/` or `src/app/` (depending on the router: Next.js, React Router, etc.)
+
+**Example:**
+```typescript
+export const ProductPage = ({ productId }: { productId: string }) => {
+  const { data: product, loading } = useProduct(productId);
+  
+  if (loading) return <Spinner />;
+  
+  return (
+    <DashboardLayout>
+      <ProductCard product={product} />
+    </DashboardLayout>
+  )
+}
+```
+
+---
+
+## 📏 Implementation Rules - AI MUST ALWAYS FOLLOW
+
+### 1. Mandatory Classification
+Before creating any component, **define its level**:
+- Is it a base UI element? → **Atom**
+- Is it a simple combination of atoms? → **Molecule**
+- Is it an independent visual block? → **Organism**
+- Is it a page layout structure? → **Template**
+- Is it a page with data? → **Page**
+
+### 2. Dependency Flow (Strictly Enforced)
+```
+Pages ──┐
+        ├─→ Templates ──┐
+        │               ├─→ Organisms ──┐
+        │               │               ├─→ Molecules ──┐
+        │               │               │               └─→ Atoms
+        └───────────────┴───────────────┴───────────────┘
+```
+
+**RULES:**
+- ⚛️ **Atoms:** Zero imports of project components (only utils, types)
+- 🧬 **Molecules:** Import ONLY Atoms
+- 🦠 **Organisms:** Import Atoms + Molecules + Organisms
+- 📐 **Templates:** Import Organisms + Molecules + Atoms
+- 📄 **Pages:** Import anything below
+
+**🚫 NEVER VIOLATE:**
+- ❌ Molecule importing Organism
+- ❌ Atom importing Molecule
+- ❌ Organism importing Page
+- ❌ Template importing Page
+
+### 3. File Naming and Structure
+- **Pattern:** PascalCase for component names
+- **Files:** `src/components/[level]/ComponentName/`
+- **Typing:** Explicit TypeScript in props: `interface ComponentNameProps { }`
+- **Exports:** Always export as a named export
+- **Index:** Use `index.ts` for re-exports if necessary
+
+**Suggested Structure:**
+```
+src/components/
+  atoms/
+    Button/
+      Button.tsx
+      Button.types.ts
+      Button.styles.css
+      index.ts
+  molecules/
+    FormField/
+      FormField.tsx
+      index.ts
+  organisms/
+    LoginForm/
+      LoginForm.tsx
+      index.ts
+```
+
+### 4. Logic Isolation (Critically Important)
+- **Data logic (fetch, queries):** ONLY in Pages
+- **Event handlers:** Can be in Organisms (local logic)
+- **State management:** Context/Redux in Pages, local state in Organisms/Molecules
+- **Mandatory Props:** Smaller components receive data via props, they do not call APIs
+
+---
+
+## 📝 Code Patterns
+
+### TypeScript: Always Typed Props
+```typescript
+// ✅ GOOD
+interface ButtonProps {
+  variant?: 'primary' | 'secondary' | 'danger';
+  size?: 'sm' | 'md' | 'lg';
+  disabled?: boolean;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  children: React.ReactNode;
+}
+
+export const Button = ({ variant = 'primary', ...props }: ButtonProps) => { }
+
+// ❌ BAD
+export const Button = (props: any) => { }
+```
+
+### Composition in Molecules
+```typescript
+// ✅ GOOD: Molecule composed of Atoms
+export const SearchBar = ({ onSearch }: SearchBarProps) => (
+  <div className="search-bar">
+    <Input placeholder="Search..." />
+    <Button>Search</Button>
+  </div>
+)
+
+// ❌ BAD: Complex logic, importing Organisms
+import { ProductList } from '../organisms/ProductList';
+export const SearchBar = ({ onSearch }: SearchBarProps) => { }
+```
+
+### Data Passing in Organisms
+```typescript
+// ✅ GOOD: Organism receives data via props
+export const ProductCard = ({ product, onAddCart }: ProductCardProps) => (
+  <div>
+    <h2>{product.name}</h2>
+    <Button onClick={() => onAddCart(product.id)}>Add to Cart</Button>
+  </div>
+)
+
+// ❌ BAD: Organism calls API directly
+export const ProductCard = ({ productId }: ProductCardProps) => {
+  const [product, setProduct] = useState(null);
+  useEffect(() => { fetch(`/api/products/${productId}`); }, []);
+}
+```
+
+### Centralized Logic in Pages
+```typescript
+// ✅ GOOD: Page manages data, passes to components
+export const ProductPage = ({ productId }: { productId: string }) => {
+  const [product, setProduct] = useState(null);
+  
+  useEffect(() => {
+    fetch(`/api/products/${productId}`).then(setProduct);
+  }, [productId]);
+  
+  return <ProductCard product={product} onAddCart={addToCart} />;
+}
+```
+
+---
+
+## 🎨 When Building Landing Pages
+
+1. **Start with Atoms:** Define base Button, Input, Typography, Icon
+2. **Then Molecules:** SearchBar, FormField, CardHeader
+3. **Then Organisms:** Header, HeroSection, FeatureCards, Footer
+4. **Finally Templates:** Combine everything into a visual structure
+5. **Pages:** Use real data when ready
+
+---
+
+## 🚨 Anti-Patterns and What to Avoid
+
+| ❌ Avoid | ✅ Do |
+|-----------|----------|
+| Atom with complex state | Atom receives everything via props |
+| Molecule importing Organism | Molecule imports only Atoms |
+| Organism calling API | Page calls API, passes data as props |
+| Template with business logic | Template is pure layout |
+| Circular dependencies | Always unidirectional flow |
+| Extreme props drilling (>3 levels) | Use Context or composition |
+
+---
+
+## ✅ Checklist Before Creating a Component
+
+- [ ] Atomic level correctly defined?
+- [ ] Dependencies follow the hierarchy?
+- [ ] Props are typed in TypeScript?
+- [ ] Names follow PascalCase?
+- [ ] File is in the correct directory?
+- [ ] Responsibility is clear and focused?
+- [ ] No imports that violate the architecture?
+- [ ] No API calls in Atoms/Molecules/Organisms?
