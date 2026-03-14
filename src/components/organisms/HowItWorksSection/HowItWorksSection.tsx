@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { Badge } from "@/components/atoms/Badge";
 import { Button } from "@/components/atoms/Button";
 import { Icon } from "@/components/atoms/Icon";
 import { Typography } from "@/components/atoms/Typography";
@@ -55,14 +54,16 @@ export const HowItWorksSection = () => {
   const step = STEPS[activeStep];
 
   return (
-    <section id="como-funciona" className="py-16 md:py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4">
+    <section id="como-funciona" className="py-16 md:py-24 bg-[#F0F1F5]">
+      <div className="max-w-7xl mx-auto px-4 text-[#809cc4]">
         {/* Section header */}
         <div className="flex flex-col items-center text-center gap-4 mb-10 md:mb-12">
-          <Badge variant="default">{t("howItWorks.badge")}</Badge>
+          <span className="text-base font-mono font-light tracking-wider uppercase" style={{ color: '#809cc4' }}>
+            {t("howItWorks.badge")}
+          </span>
           <Typography
             variant="h2"
-            className="max-w-2xl text-[#0A0A0A]"
+            className="max-w-2xl text-[#0A0A0A] text-9xl"
           >
             {t("howItWorks.heading")}
           </Typography>

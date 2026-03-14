@@ -44,10 +44,6 @@ export const TrustStrip = () => {
             </div>
           ))}
         </div>
-
-        <Typography variant="caption" as="p">
-          {t("trustStrip.source")}
-        </Typography>
       </div>
     </section>
   );

@@ -28,6 +28,16 @@ export const Header = () => {
 
   const closeDrawer = () => setIsOpen(false);
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    if (href === '/') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+    const id = href.replace('#', '');
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <header
       className={[
@@ -41,8 +51,12 @@ export const Header = () => {
         {/* Desktop layout */}
         <div className="hidden md:flex items-center justify-between w-full">
           {/* Logo */}
-          <Link href="/" className="flex items-center font-stratford text-2xl text-[#0A0A0A] transition-opacity">
-            <Image src="/logo.png" alt="Postable Logo" width={78} height={78} className="object-contain" />
+          <Link 
+            href="/" 
+            className="flex items-center font-stratford text-2xl text-[#0A0A0A] transition-opacity"
+            onClick={(e) => handleNavClick(e as React.MouseEvent<HTMLAnchorElement>, '/')}
+          >
+            <Image src="/logo.png" alt="Postable Logo" width={78} height={78} className="w-20 h-20 object-contain" />
             Postable
           </Link>
 
@@ -52,7 +66,7 @@ export const Header = () => {
             className="flex items-center gap-6 border border-[#E0E0E0] rounded-full px-6 py-2 bg-white/90"
           >
             {NAV_LINKS.map((link) => (
-              <NavItem key={link.href} href={link.href}>
+              <NavItem key={link.href} href={link.href} onClick={(e) => handleNavClick(e as React.MouseEvent<HTMLAnchorElement>, link.href)}>
                 {t(link.labelKey)}
               </NavItem>
             ))}
@@ -80,8 +94,12 @@ export const Header = () => {
         {/* Mobile layout */}
         <div className="flex md:hidden items-center justify-between w-full">
           {/* Logo */}
-          <Link href="/" className="flex items-center font-stratford text-2xl text-[#0A0A0A] hover:opacity-80 transition-opacity">
-            <Image src="/logo.png" alt="Postable Logo" width={44} height={44} className="object-contain" />
+          <Link 
+            href="/" 
+            className="flex items-center font-stratford text-2xl text-[#0A0A0A] hover:opacity-80 transition-opacity"
+            onClick={(e) => handleNavClick(e as React.MouseEvent<HTMLAnchorElement>, '/')}
+          >
+            <Image src="/logo.png" alt="Postable Logo" width={78} height={78} className="w-8 h-8 object-contain mr-2" />
             Postable
           </Link>
 
@@ -106,7 +124,14 @@ export const Header = () => {
             className="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-4"
           >
             {NAV_LINKS.map((link) => (
-              <NavItem key={link.href} href={link.href} onClick={closeDrawer}>
+              <NavItem 
+                key={link.href} 
+                href={link.href} 
+                onClick={(e) => {
+                  handleNavClick(e as React.MouseEvent<HTMLAnchorElement>, link.href);
+                  closeDrawer();
+                }}
+              >
                 {t(link.labelKey)}
               </NavItem>
             ))}

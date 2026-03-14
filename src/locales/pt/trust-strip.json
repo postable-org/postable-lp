@@ -1,22 +1,21 @@
 {
-  "heading": "Números que explicam por que o Postable existe",
+  "heading": "Tudo que você precisa para crescer nas redes",
   "stats": [
     {
-      "value": "−28%",
-      "description": "Alcance orgânico no Instagram"
+      "value": "3",
+      "description": "Concorrentes locais analisados"
     },
     {
-      "value": "R$97/mês",
-      "description": "vs R$800–2.500 com agência"
+      "value": "5+",
+      "description": "Plataformas sociais suportadas"
     },
     {
-      "value": "< R$0,05",
-      "description": "custo por post via API"
+      "value": "< 5 min",
+      "description": "Tempo para seu primeiro post"
     },
     {
       "value": "7 dias grátis",
       "description": "Sem cartão de crédito"
     }
-  ],
-  "source": "Fonte: Socialinsider 2025 Social Media Benchmarks Report"
+  ]
 }

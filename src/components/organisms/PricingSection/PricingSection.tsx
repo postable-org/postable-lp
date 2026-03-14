@@ -75,7 +75,7 @@ export const PricingSection = () => {
     <section id="precos" className="py-16 md:py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex flex-col items-center gap-6 mb-12">
-          <Typography variant="label">{t('pricing.badge')}</Typography>
+          <span className="text-base font-mono font-light tracking-wider uppercase" style={{ color: '#809cc4' }}>{t('pricing.badge')}</span>
           <Typography variant="h2" className="text-center">
             {t('pricing.heading')}
           </Typography>

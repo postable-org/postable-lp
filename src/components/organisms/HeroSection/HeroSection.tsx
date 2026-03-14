@@ -52,7 +52,7 @@ export const HeroSection = () => {
           </Button>
           <a
             href="#como-funciona"
-            className="inline-flex items-center justify-center gap-2 font-medium transition-all duration-200 ease-out bg-transparent text-[#0A0A0A] border border-[#E0E0E0] hover:border-[#0A0A0A] rounded-full px-8 py-2.5 text-lg focus:outline-none focus:ring-2 focus:ring-[#0A0A0A] focus:ring-offset-2"
+            className="inline-flex items-center justify-center gap-2 font-medium transition-all duration-200 ease-out bg-[#F0F1F5] text-[#0A0A0A] border border-[#E0E0E0] hover:border-[#0A0A0A] rounded-full px-8 py-2.5 text-lg focus:outline-none focus:ring-2 focus:ring-[#0A0A0A] focus:ring-offset-2"
           >
             {t("hero.secondaryCTA")}
           </a>

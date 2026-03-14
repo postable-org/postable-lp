@@ -46,9 +46,9 @@ export const FAQSection = () => {
       <div className="max-w-3xl mx-auto">
         {/* Section Header */}
         <div className="mb-12 text-center">
-          <Typography variant="label" className="text-[#B0B0B0] mb-3 block">
+          <span className="text-base font-mono font-light tracking-wider uppercase mb-3 block" style={{ color: '#809cc4' }}>
             {t("faq.badge")}
-          </Typography>
+          </span>
           <Typography
             variant="h2"
             className="text-4xl md:text-5xl font-bold text-[#0A0A0A]"

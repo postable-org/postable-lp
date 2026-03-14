@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { Badge } from "@/components/atoms/Badge";
 import { Icon } from "@/components/atoms/Icon";
 import { Typography } from "@/components/atoms/Typography";
 import { useTranslation } from "@/hooks/useTranslation";
@@ -16,7 +15,7 @@ export const VideoDemoSection = () => {
     <section id="demo" className="py-16 md:py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex flex-col items-center text-center gap-4 mb-10 md:mb-12">
-          <Badge variant="default">{t("videoDemo.badge")}</Badge>
+          <span className="text-base font-mono font-light tracking-wider uppercase" style={{ color: '#809cc4' }}>{t("videoDemo.badge")}</span>
           <Typography variant="h2" className="max-w-2xl text-[#0A0A0A]">
             {t("videoDemo.heading")}
           </Typography>

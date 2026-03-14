@@ -1,4 +1,3 @@
-import { Badge } from "@/components/atoms/Badge";
 import { Typography } from "@/components/atoms/Typography";
 import { TestimonialCard } from "@/components/molecules/TestimonialCard";
 import { useTranslation } from "@/hooks/useTranslation";
@@ -73,7 +72,7 @@ export const TestimonialsSection = () => {
     <section className="bg-[#F5F5F5] py-16 md:py-24 px-4">
       <div className="max-w-7xl mx-auto flex flex-col gap-12">
         <div className="flex flex-col items-center text-center gap-3">
-          <Badge variant="outline">{t("testimonials.badge")}</Badge>
+          <span className="text-base font-mono font-light tracking-wider uppercase" style={{ color: '#809cc4' }}>{t("testimonials.badge")}</span>
           <Typography as="h2" variant="h2">
             {t("testimonials.heading")}
           </Typography>

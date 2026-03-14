@@ -1,22 +1,21 @@
 {
-  "heading": "Numbers that explain why Postable exists",
+  "heading": "Everything you need to grow on social media",
   "stats": [
     {
-      "value": "−28%",
-      "description": "Organic reach on Instagram"
+      "value": "3",
+      "description": "Local competitors analyzed"
     },
     {
-      "value": "$12-300/mo",
-      "description": "vs $800-2,500 with an agency"
+      "value": "5+",
+      "description": "Social platforms supported"
     },
     {
-      "value": "< $0.01",
-      "description": "cost per post via API"
+      "value": "< 5 min",
+      "description": "Time to your first post"
     },
     {
-      "value": "Free 7 days",
+      "value": "7 days free",
       "description": "No credit card needed"
     }
-  ],
-  "source": "Source: Socialinsider 2025 Social Media Benchmarks Report"
+  ]
 }

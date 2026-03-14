@@ -1,4 +1,3 @@
-import { Badge } from "@/components/atoms/Badge";
 import { Typography } from "@/components/atoms/Typography";
 import { PainCard } from "@/components/molecules/PainCard";
 import { useTranslation } from "@/hooks/useTranslation";
@@ -40,7 +39,7 @@ export const PainPointsSection = () => {
       <div className="max-w-7xl mx-auto px-4">
         {/* Section header */}
         <div className="flex flex-col items-center text-center gap-4 mb-10 md:mb-12">
-          <Badge variant="default">{t("painPoints.sectionBadge")}</Badge>
+          <span className="text-base font-mono font-light tracking-wider uppercase" style={{ color: '#809cc4' }}>{t("painPoints.sectionBadge")}</span>
           <Typography variant="h2" className="max-w-2xl text-[#0A0A0A]">
             {t("painPoints.heading")}
           </Typography>

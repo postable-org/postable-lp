@@ -6,7 +6,7 @@ export const NavItem = ({ active = false, className = "", children, ...props }: 
       className={[
         "font-[family-name:var(--font-inter)] text-sm font-medium",
         "transition-colors duration-200 ease-out",
-        "focus:outline-none focus:ring-2 focus:ring-[#0A0A0A] focus:ring-offset-2 rounded-sm",
+        "focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A0A0A] focus-visible:ring-offset-2 rounded-sm",
         active
           ? "text-[#0A0A0A]"
           : "text-[#6B6B6B] hover:text-[#0A0A0A]",
