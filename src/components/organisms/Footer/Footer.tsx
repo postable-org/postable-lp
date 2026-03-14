@@ -1,19 +1,26 @@
+"use client";
+
+import Image from 'next/image';
 import Link from 'next/link';
 import { Typography } from '@/components/atoms/Typography';
+import { useTranslation } from '@/hooks/useTranslation';
 
 export const Footer = () => {
+  const { t } = useTranslation();
+
   return (
     <footer className="bg-white border-t border-[#E0E0E0] py-10 px-4">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
         {/* Left side — brand block */}
         <div className="flex flex-col items-center md:items-start gap-2">
           {/* Wordmark */}
-          <Link href="/" className="font-[family-name:var(--font-dm-sans)] font-bold text-lg text-[#0A0A0A] hover:opacity-80 transition-opacity">
+          <Link href="/" className="flex items-center font-stratford text-2xl text-[#0A0A0A] hover:opacity-80 transition-opacity">
+            <Image src="/logo.png" alt="Postable Logo" width={76} height={76} className="object-contain" />
             Postable
           </Link>
           {/* Tagline */}
           <Typography variant="caption">
-            Conteúdo estratégico que gera leads.
+            {t("footer.tagline")}
           </Typography>
         </div>
 
@@ -25,19 +32,19 @@ export const Footer = () => {
               href="/terms"
               className="text-[#6B6B6B] hover:underline focus:ring-2 focus:ring-[#0A0A0A] focus:ring-offset-2 focus:outline-none rounded px-1"
             >
-              Termos de Uso
+              {t("footer.termsLink")}
             </Link>
             <span className="text-[#E0E0E0]">·</span>
             <Link
               href="/privacy"
               className="text-[#6B6B6B] hover:underline focus:ring-2 focus:ring-[#0A0A0A] focus:ring-offset-2 focus:outline-none rounded px-1"
             >
-              Política de Privacidade
+              {t("footer.privacyLink")}
             </Link>
           </div>
           {/* Copyright */}
           <Typography variant="caption">
-            © 2026 Postable. Todos os direitos reservados.
+            {t("footer.copyright")}
           </Typography>
         </div>
       </div>

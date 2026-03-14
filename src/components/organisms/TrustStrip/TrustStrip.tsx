@@ -1,18 +1,26 @@
 import { Typography } from '@/components/atoms/Typography';
+import { useTranslation } from '@/hooks/useTranslation';
 
-const PROOF_STATS = [
-  { value: '−28%', description: 'Alcance orgânico no Instagram' },
-  { value: 'R$97/mês', description: 'vs R$800–2.500 com agência' },
-  { value: '< R$0,05', description: 'custo por post via API' },
-  { value: '7 dias grátis', description: 'Sem cartão de crédito' },
-] as const;
+interface ProofStat {
+  value: string;
+  description: string;
+}
 
 export const TrustStrip = () => {
+  const { t } = useTranslation();
+
+  const PROOF_STATS: ProofStat[] = [
+    { value: t("trustStrip.stats.0.value"), description: t("trustStrip.stats.0.description") },
+    { value: t("trustStrip.stats.1.value"), description: t("trustStrip.stats.1.description") },
+    { value: t("trustStrip.stats.2.value"), description: t("trustStrip.stats.2.description") },
+    { value: t("trustStrip.stats.3.value"), description: t("trustStrip.stats.3.description") },
+  ];
+
   return (
     <section className="border-y border-[#E0E0E0] bg-[#F5F5F5] py-10">
       <div className="max-w-7xl mx-auto px-4 flex flex-col items-center gap-6">
         <Typography variant="label" as="p">
-          Números que explicam por que o Postable existe
+          {t("trustStrip.heading")}
         </Typography>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-8 md:gap-16">
@@ -38,7 +46,7 @@ export const TrustStrip = () => {
         </div>
 
         <Typography variant="caption" as="p">
-          Fonte: Socialinsider 2025 Social Media Benchmarks Report
+          {t("trustStrip.source")}
         </Typography>
       </div>
     </section>

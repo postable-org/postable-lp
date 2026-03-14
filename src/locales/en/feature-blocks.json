@@ -1,0 +1,54 @@
+{
+  "blocks": [
+    {
+      "badge": "Competitive Gap Analysis",
+      "title": "Understand what your competitors post",
+      "subtitle": "Find the open spaces and discover topics you should dominate before they do.",
+      "items": [
+        "Competitor mapping",
+        "Gap identification",
+        "Topic prioritization"
+      ]
+    },
+    {
+      "badge": "Strategic Content Generation",
+      "title": "Create personalized posts",
+      "subtitle": "Based on regional trends and identified gaps, with tone calibrated to your business.",
+      "items": [
+        "Regional trends",
+        "Gap-based posts",
+        "Tone calibration"
+      ]
+    },
+    {
+      "badge": "Approval & Publishing",
+      "title": "Organize your editorial calendar",
+      "subtitle": "Approve content easily and publish at the right times without manual effort.",
+      "items": [
+        "Editorial calendar",
+        "Approval workflow",
+        "Scheduled publishing"
+      ]
+    },
+    {
+      "badge": "Distribution Automation",
+      "title": "Publish across multiple platforms",
+      "subtitle": "Automatically, at the optimal time for each network, and track performance in real time.",
+      "items": [
+        "Multi-platform scheduling",
+        "Time optimization",
+        "Performance tracking"
+      ]
+    },
+    {
+      "badge": "Results Analysis",
+      "title": "Measure your content's real impact",
+      "subtitle": "Engagement, ROI, and actionable recommendations to grow more every cycle.",
+      "items": [
+        "Engagement metrics",
+        "ROI calculation",
+        "Optimization recommendations"
+      ]
+    }
+  ]
+}

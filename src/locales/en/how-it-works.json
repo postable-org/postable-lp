@@ -1,0 +1,37 @@
+{
+  "badge": "How It Works",
+  "heading": "From onboarding to first post in under 10 minutes.",
+  "cta": "Get Started — Free for 7 Days",
+  "tabs": [
+    "Onboarding",
+    "Analysis",
+    "Gap",
+    "Publish"
+  ],
+  "steps": [
+    {
+      "label": "01",
+      "stepLabel": "Step 1",
+      "title": "Tell us your niche and city",
+      "description": "Set up your profile in under 5 minutes: business type, city, and target audience. No long forms, no technical setup."
+    },
+    {
+      "label": "02",
+      "stepLabel": "Step 2",
+      "title": "We map your local competitors",
+      "description": "Our AI automatically identifies your top 3 local competitors and analyzes what they post — frequency, topics, and engagement."
+    },
+    {
+      "label": "03",
+      "stepLabel": "Step 3",
+      "title": "We find the gap",
+      "description": "Based on competitive analysis, we detect topics no competitor covers. That's your space to dominate the local conversation."
+    },
+    {
+      "label": "04",
+      "stepLabel": "Step 4",
+      "title": "Posts ready, you approve",
+      "description": "Postable generates posts based on identified gaps. You review, adjust if needed, and approve. Publishing is automatically scheduled."
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "badge": "PLANOS",
+  "heading": "Escolha o plano perfeito para seu negócio",
+  "billingMonthly": "Mensal",
+  "billingAnnual": "Anual",
+  "discount": "−20%",
+  "trialBadge": "7 dias grátis",
+  "perMonth": "/mês",
+  "ctaButton": "Começar teste grátis",
+  "disclaimer": "Sem cartão de crédito · Cancele quando quiser",
+  "plans": [
+    {
+      "name": "Básico",
+      "posts": "20 posts/mês",
+      "features": [
+        "Até 20 posts por mês",
+        "Agendamento básico",
+        "Relatórios simples",
+        "Suporte por email"
+      ]
+    },
+    {
+      "name": "Avançado",
+      "posts": "50 posts/mês",
+      "features": [
+        "Até 50 posts por mês",
+        "Agendamento avançado",
+        "Integrações com redes sociais",
+        "Análises detalhadas",
+        "Suporte prioritário"
+      ]
+    },
+    {
+      "name": "Agência",
+      "posts": "Ilimitado",
+      "features": [
+        "Posts ilimitados",
+        "Múltiplas contas",
+        "Integrações completas",
+        "Análises avançadas",
+        "Suporte 24/7",
+        "Gestor de contas dedicado"
+      ]
+    }
+  ]
+}
+

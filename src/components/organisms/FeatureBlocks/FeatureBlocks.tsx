@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Badge } from "@/components/atoms/Badge";
 import { Typography } from "@/components/atoms/Typography";
 import { FeatureListItem } from "@/components/molecules/FeatureListItem";
+import { useTranslation } from "@/hooks/useTranslation";
 
 interface SubFeature {
   number: string;
@@ -19,134 +20,6 @@ interface FeatureBlockData {
   reversed: boolean;
   items: SubFeature[];
 }
-
-const FEATURE_BLOCKS: FeatureBlockData[] = [
-  {
-    id: "competitive-gap",
-    badge: "01",
-    title: "Análise de gap competitivo",
-    subtitle:
-      "Entenda o que seus concorrentes publicam, onde estão os espaços abertos e quais temas você deveria dominar antes deles.",
-    reversed: false,
-    items: [
-      {
-        number: "1",
-        label: "Mapeamento de concorrentes",
-        videoSrc: "/videos/feature-1-1.mp4",
-      },
-      {
-        number: "2",
-        label: "Identificação de gaps",
-        videoSrc: "/videos/feature-1-2.mp4",
-      },
-      {
-        number: "3",
-        label: "Priorização de temas",
-        videoSrc: "/videos/feature-1-3.mp4",
-      },
-    ],
-  },
-  {
-    id: "content-generation",
-    badge: "02",
-    title: "Geração de conteúdo estratégico",
-    subtitle:
-      "Crie posts personalizados baseados em tendências regionais e nos gaps identificados, com tom calibrado para o seu negócio.",
-    reversed: true,
-    items: [
-      {
-        number: "1",
-        label: "Tendências regionais",
-        videoSrc: "/videos/feature-2-1.mp4",
-      },
-      {
-        number: "2",
-        label: "Posts baseados em gaps",
-        videoSrc: "/videos/feature-2-2.mp4",
-      },
-      {
-        number: "3",
-        label: "Calibração de tom",
-        videoSrc: "/videos/feature-2-3.mp4",
-      },
-    ],
-  },
-  {
-    id: "approval-publishing",
-    badge: "03",
-    title: "Aprovação e publicação",
-    subtitle:
-      "Organize seu calendário editorial, aprove conteúdos com facilidade e publique nos horários certos sem esforço manual.",
-    reversed: false,
-    items: [
-      {
-        number: "1",
-        label: "Calendário editorial",
-        videoSrc: "/videos/feature-3-1.mp4",
-      },
-      {
-        number: "2",
-        label: "Fluxo de aprovação",
-        videoSrc: "/videos/feature-3-2.mp4",
-      },
-      {
-        number: "3",
-        label: "Publicação agendada",
-        videoSrc: "/videos/feature-3-3.mp4",
-      },
-    ],
-  },
-  {
-    id: "distribution",
-    badge: "04",
-    title: "Automatização de distribuição",
-    subtitle:
-      "Publique em múltiplas plataformas automaticamente, no momento ideal para cada rede, e acompanhe o desempenho em tempo real.",
-    reversed: true,
-    items: [
-      {
-        number: "1",
-        label: "Agendamento multiplataforma",
-        videoSrc: "/videos/feature-4-1.mp4",
-      },
-      {
-        number: "2",
-        label: "Otimização de horário",
-        videoSrc: "/videos/feature-4-2.mp4",
-      },
-      {
-        number: "3",
-        label: "Rastreamento de performance",
-        videoSrc: "/videos/feature-4-3.mp4",
-      },
-    ],
-  },
-  {
-    id: "results",
-    badge: "05",
-    title: "Análise de resultados",
-    subtitle:
-      "Meça o impacto real do seu conteúdo: engajamento, ROI e recomendações práticas para crescer mais a cada ciclo.",
-    reversed: false,
-    items: [
-      {
-        number: "1",
-        label: "Métricas de engajamento",
-        videoSrc: "/videos/feature-5-1.mp4",
-      },
-      {
-        number: "2",
-        label: "Cálculo de ROI",
-        videoSrc: "/videos/feature-5-2.mp4",
-      },
-      {
-        number: "3",
-        label: "Recomendações de otimização",
-        videoSrc: "/videos/feature-5-3.mp4",
-      },
-    ],
-  },
-];
 
 interface FeatureBlockProps {
   block: FeatureBlockData;
@@ -230,6 +103,131 @@ const FeatureBlock = ({ block }: FeatureBlockProps) => {
 };
 
 export const FeatureBlocks = () => {
+  const { t } = useTranslation();
+
+  const FEATURE_BLOCKS: FeatureBlockData[] = [
+    {
+      id: "competitive-gap",
+      badge: t("featureBlocks.blocks.0.badge"),
+      title: t("featureBlocks.blocks.0.title"),
+      subtitle: t("featureBlocks.blocks.0.subtitle"),
+      reversed: false,
+      items: [
+        {
+          number: "1",
+          label: t("featureBlocks.blocks.0.items.0"),
+          videoSrc: "/videos/feature-1-1.mp4",
+        },
+        {
+          number: "2",
+          label: t("featureBlocks.blocks.0.items.1"),
+          videoSrc: "/videos/feature-1-2.mp4",
+        },
+        {
+          number: "3",
+          label: t("featureBlocks.blocks.0.items.2"),
+          videoSrc: "/videos/feature-1-3.mp4",
+        },
+      ],
+    },
+    {
+      id: "content-generation",
+      badge: t("featureBlocks.blocks.1.badge"),
+      title: t("featureBlocks.blocks.1.title"),
+      subtitle: t("featureBlocks.blocks.1.subtitle"),
+      reversed: true,
+      items: [
+        {
+          number: "1",
+          label: t("featureBlocks.blocks.1.items.0"),
+          videoSrc: "/videos/feature-2-1.mp4",
+        },
+        {
+          number: "2",
+          label: t("featureBlocks.blocks.1.items.1"),
+          videoSrc: "/videos/feature-2-2.mp4",
+        },
+        {
+          number: "3",
+          label: t("featureBlocks.blocks.1.items.2"),
+          videoSrc: "/videos/feature-2-3.mp4",
+        },
+      ],
+    },
+    {
+      id: "approval-publishing",
+      badge: t("featureBlocks.blocks.2.badge"),
+      title: t("featureBlocks.blocks.2.title"),
+      subtitle: t("featureBlocks.blocks.2.subtitle"),
+      reversed: false,
+      items: [
+        {
+          number: "1",
+          label: t("featureBlocks.blocks.2.items.0"),
+          videoSrc: "/videos/feature-3-1.mp4",
+        },
+        {
+          number: "2",
+          label: t("featureBlocks.blocks.2.items.1"),
+          videoSrc: "/videos/feature-3-2.mp4",
+        },
+        {
+          number: "3",
+          label: t("featureBlocks.blocks.2.items.2"),
+          videoSrc: "/videos/feature-3-3.mp4",
+        },
+      ],
+    },
+    {
+      id: "distribution",
+      badge: t("featureBlocks.blocks.3.badge"),
+      title: t("featureBlocks.blocks.3.title"),
+      subtitle: t("featureBlocks.blocks.3.subtitle"),
+      reversed: true,
+      items: [
+        {
+          number: "1",
+          label: t("featureBlocks.blocks.3.items.0"),
+          videoSrc: "/videos/feature-4-1.mp4",
+        },
+        {
+          number: "2",
+          label: t("featureBlocks.blocks.3.items.1"),
+          videoSrc: "/videos/feature-4-2.mp4",
+        },
+        {
+          number: "3",
+          label: t("featureBlocks.blocks.3.items.2"),
+          videoSrc: "/videos/feature-4-3.mp4",
+        },
+      ],
+    },
+    {
+      id: "results",
+      badge: t("featureBlocks.blocks.4.badge"),
+      title: t("featureBlocks.blocks.4.title"),
+      subtitle: t("featureBlocks.blocks.4.subtitle"),
+      reversed: false,
+      items: [
+        {
+          number: "1",
+          label: t("featureBlocks.blocks.4.items.0"),
+          videoSrc: "/videos/feature-5-1.mp4",
+        },
+        {
+          number: "2",
+          label: t("featureBlocks.blocks.4.items.1"),
+          videoSrc: "/videos/feature-5-2.mp4",
+        },
+        {
+          number: "3",
+          label: t("featureBlocks.blocks.4.items.2"),
+          videoSrc: "/videos/feature-5-3.mp4",
+        },
+      ],
+    },
+  ];
+
   return (
     <div>
       {FEATURE_BLOCKS.map((block, index) => (

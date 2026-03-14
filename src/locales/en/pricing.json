@@ -1,0 +1,47 @@
+{
+  "badge": "PLANS",
+  "heading": "Choose the perfect plan for your business",
+  "billingMonthly": "Monthly",
+  "billingAnnual": "Annual",
+  "discount": "−20%",
+  "trialBadge": "Free 7 days",
+  "perMonth": "/mo",
+  "ctaButton": "Start Free Trial",
+  "disclaimer": "No credit card · Cancel anytime",
+  "plans": [
+    {
+      "name": "Basic",
+      "posts": "20 posts/mo",
+      "features": [
+        "Up to 20 posts per month",
+        "Basic scheduling",
+        "Simple reports",
+        "Email support"
+      ]
+    },
+    {
+      "name": "Advanced",
+      "posts": "50 posts/mo",
+      "features": [
+        "Up to 50 posts per month",
+        "Advanced scheduling",
+        "Social media integrations",
+        "Detailed analytics",
+        "Priority support"
+      ]
+    },
+    {
+      "name": "Agency",
+      "posts": "Unlimited",
+      "features": [
+        "Unlimited posts",
+        "Multiple accounts",
+        "Full integrations",
+        "Advanced analytics",
+        "24/7 support",
+        "Dedicated account manager"
+      ]
+    }
+  ]
+}
+

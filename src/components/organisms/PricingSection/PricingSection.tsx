@@ -5,6 +5,7 @@ import { Badge } from '@/components/atoms/Badge';
 import { Button } from '@/components/atoms/Button';
 import { Typography } from '@/components/atoms/Typography';
 import { PricingFeatureItem } from '@/components/molecules/PricingFeatureItem';
+import { useTranslation } from '@/hooks/useTranslation';
 
 type BillingInterval = 'monthly' | 'annual';
 
@@ -17,53 +18,54 @@ interface PricingPlan {
   features: string[];
 }
 
-const pricingPlans: PricingPlan[] = [
-  {
-    name: 'Básico',
-    monthlyPrice: 97,
-    annualPrice: 78,
-    posts: '20 posts/mês',
-    featured: false,
-    features: [
-      'Até 20 posts por mês',
-      'Agendamento básico',
-      'Relatórios simples',
-      'Suporte por email',
-    ],
-  },
-  {
-    name: 'Avançado',
-    monthlyPrice: 197,
-    annualPrice: 158,
-    posts: '50 posts/mês',
-    featured: true,
-    features: [
-      'Até 50 posts por mês',
-      'Agendamento avançado',
-      'Integrações com redes sociais',
-      'Análises detalhadas',
-      'Suporte prioritário',
-    ],
-  },
-  {
-    name: 'Agência',
-    monthlyPrice: 297,
-    annualPrice: 238,
-    posts: 'Ilimitado',
-    featured: false,
-    features: [
-      'Posts ilimitados',
-      'Múltiplas contas',
-      'Integrações completas',
-      'Análises avançadas',
-      'Suporte 24/7',
-      'Gestor de contas dedicado',
-    ],
-  },
-];
-
 export const PricingSection = () => {
+  const { t } = useTranslation();
   const [billingInterval, setBillingInterval] = useState<BillingInterval>('monthly');
+
+  const pricingPlans: PricingPlan[] = [
+    {
+      name: t('pricing.plans.0.name'),
+      monthlyPrice: 97,
+      annualPrice: 78,
+      posts: t('pricing.plans.0.posts'),
+      featured: false,
+      features: [
+        t('pricing.plans.0.features.0'),
+        t('pricing.plans.0.features.1'),
+        t('pricing.plans.0.features.2'),
+        t('pricing.plans.0.features.3'),
+      ],
+    },
+    {
+      name: t('pricing.plans.1.name'),
+      monthlyPrice: 197,
+      annualPrice: 158,
+      posts: t('pricing.plans.1.posts'),
+      featured: true,
+      features: [
+        t('pricing.plans.1.features.0'),
+        t('pricing.plans.1.features.1'),
+        t('pricing.plans.1.features.2'),
+        t('pricing.plans.1.features.3'),
+        t('pricing.plans.1.features.4'),
+      ],
+    },
+    {
+      name: t('pricing.plans.2.name'),
+      monthlyPrice: 297,
+      annualPrice: 238,
+      posts: t('pricing.plans.2.posts'),
+      featured: false,
+      features: [
+        t('pricing.plans.2.features.0'),
+        t('pricing.plans.2.features.1'),
+        t('pricing.plans.2.features.2'),
+        t('pricing.plans.2.features.3'),
+        t('pricing.plans.2.features.4'),
+        t('pricing.plans.2.features.5'),
+      ],
+    },
+  ];
 
   const getPrice = (plan: PricingPlan): number => {
     return billingInterval === 'monthly' ? plan.monthlyPrice : plan.annualPrice;
@@ -73,9 +75,9 @@ export const PricingSection = () => {
     <section id="precos" className="py-16 md:py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex flex-col items-center gap-6 mb-12">
-          <Typography variant="label">PLANOS</Typography>
+          <Typography variant="label">{t('pricing.badge')}</Typography>
           <Typography variant="h2" className="text-center">
-            Escolha o plano perfeito para seu negócio
+            {t('pricing.heading')}
           </Typography>
         </div>
 
@@ -92,7 +94,7 @@ export const PricingSection = () => {
                   : 'bg-transparent text-[#6B6B6B] hover:text-[#0A0A0A]',
               ].join(' ')}
             >
-              Mensal
+              {t('pricing.billingMonthly')}
             </button>
             <button
               onClick={() => setBillingInterval('annual')}
@@ -105,11 +107,11 @@ export const PricingSection = () => {
                   : 'bg-transparent text-[#6B6B6B] hover:text-[#0A0A0A]',
               ].join(' ')}
             >
-              Anual
+              {t('pricing.billingAnnual')}
             </button>
             {billingInterval === 'annual' && (
               <Badge variant="default" className="ml-2">
-                −20%
+                {t('pricing.discount')}
               </Badge>
             )}
           </div>
@@ -129,7 +131,7 @@ export const PricingSection = () => {
             >
               <div className="mb-6">
                 <Badge variant="outline" className="mb-4">
-                  7 dias grátis
+                  {t('pricing.trialBadge')}
                 </Badge>
               </div>
 
@@ -150,7 +152,7 @@ export const PricingSection = () => {
                   R${getPrice(plan)}
                 </span>
                 <Typography variant="caption" className="text-[#6B6B6B]">
-                  /mês
+                  {t('pricing.perMonth')}
                 </Typography>
               </div>
 
@@ -169,7 +171,7 @@ export const PricingSection = () => {
               </div>
 
               <Button variant="primary" size="lg" className="w-full">
-                Começar teste grátis
+                {t('pricing.ctaButton')}
               </Button>
             </div>
           ))}
@@ -177,7 +179,7 @@ export const PricingSection = () => {
 
         <div className="text-center">
           <Typography variant="caption" className="text-[#B0B0B0]">
-            Sem cartão de crédito · Cancele quando quiser
+            {t('pricing.disclaimer')}
           </Typography>
         </div>
       </div>

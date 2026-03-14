@@ -3,12 +3,6 @@ import { Header } from "@/components/organisms/Header";
 import { Footer } from "@/components/organisms/Footer";
 import { LandingPageTemplate } from "@/components/templates/LandingPageTemplate";
 
-export const metadata = {
-  title: "Termos de Serviço | Postable",
-  description:
-    "Leia os Termos de Serviço do Postable e compreenda as condições para utilização da plataforma.",
-};
-
 export default function TermsPage() {
   return (
     <LandingPageTemplate

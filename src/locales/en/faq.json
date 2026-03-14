@@ -1,0 +1,26 @@
+{
+  "badge": "FREQUENTLY ASKED QUESTIONS",
+  "heading": "Common questions about Postable",
+  "items": [
+    {
+      "q": "How much does Postable cost?",
+      "a": "Postable offers three plans: Basic at $12/mo, Advanced at $24/mo (most popular), and Agency at $36/mo. All include a free 7-day trial and can be paid annually with a 20% discount. No credit card required."
+    },
+    {
+      "q": "Do I need marketing experience?",
+      "a": "No. Just tell us your niche and city. Postable handles competitive analysis, gap identification, and content generation. Perfect for SMBs wanting to start without marketing expertise."
+    },
+    {
+      "q": "Can I review posts before publishing?",
+      "a": "Yes, always. Every Postable-generated post goes through an approval workflow. You can review, edit, or reject any content before publishing. Full editorial control."
+    },
+    {
+      "q": "How does competitor analysis work?",
+      "a": "Postable automatically maps your top 3 local competitors in your niche and city. It identifies content gaps (topics they don't cover), prioritizes strategic themes, and uses that intelligence to generate posts based on real opportunities."
+    },
+    {
+      "q": "Does it work for any business type?",
+      "a": "Postable is optimized for SMBs with 1-30 employees selling online. It works great for nutritionists, personal trainers, consultants, dentists, agencies, and SaaS businesses. If you sell online and want to grow through strategic content, Postable is for you."
+    }
+  ]
+}

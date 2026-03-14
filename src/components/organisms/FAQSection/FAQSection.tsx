@@ -3,42 +3,39 @@
 import { useState } from "react";
 import { FAQItem } from "@/components/molecules/FAQItem";
 import { Typography } from "@/components/atoms/Typography";
+import { useTranslation } from "@/hooks/useTranslation";
 
 interface FAQEntry {
   question: string;
   answer: string;
 }
 
-const faqData: FAQEntry[] = [
-  {
-    question: "Quanto custa a Postable?",
-    answer:
-      "A Postable oferece três planos: Básico por R$97/mês, Avançado por R$197/mês (mais popular) e Agência por R$297/mês. Todos incluem uma prova gratuita de 7 dias e podem ser pagos anualmente com 20% de desconto. Sem cartão de crédito necessário.",
-  },
-  {
-    question: "Preciso de experiência em marketing?",
-    answer:
-      "Não. Você só precisa informar seu nicho e cidade. A Postable faz toda a análise competitiva, identificação de gaps e geração de conteúdo estratégico. Perfeito para PMEs que querem começar sem experiência em marketing.",
-  },
-  {
-    question: "Posso revisar os posts antes de publicar?",
-    answer:
-      "Sim, sempre. Cada post gerado pela Postable passa por um workflow de aprovação. Você pode revisar, editar ou rejeitar qualquer conteúdo antes de publicar. Total controle editorial em suas mãos.",
-  },
-  {
-    question: "Como funciona a análise de concorrentes?",
-    answer:
-      "A Postable mapeia automaticamente seus 3 principais concorrentes locais no seu nicho e cidade. Identifica o gap de conteúdo (tópicos que eles não cobrem), prioriza temas estratégicos e usa essa inteligência para gerar posts baseados em oportunidades reais.",
-  },
-  {
-    question: "Funciona para qualquer tipo de negócio?",
-    answer:
-      "A Postable foi otimizada para PMEs de 1 a 30 funcionários que vendem digitalmente. Funciona bem com nutricionistas, personal trainers, consultores, dentistas, agências e negócios SaaS. Se você vende online e quer crescer através de conteúdo estratégico, a Postable é para você.",
-  },
-];
-
 export const FAQSection = () => {
+  const { t } = useTranslation();
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  const faqData: FAQEntry[] = [
+    {
+      question: t("faq.items.0.q"),
+      answer: t("faq.items.0.a"),
+    },
+    {
+      question: t("faq.items.1.q"),
+      answer: t("faq.items.1.a"),
+    },
+    {
+      question: t("faq.items.2.q"),
+      answer: t("faq.items.2.a"),
+    },
+    {
+      question: t("faq.items.3.q"),
+      answer: t("faq.items.3.a"),
+    },
+    {
+      question: t("faq.items.4.q"),
+      answer: t("faq.items.4.a"),
+    },
+  ];
 
   const handleToggle = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -50,13 +47,13 @@ export const FAQSection = () => {
         {/* Section Header */}
         <div className="mb-12 text-center">
           <Typography variant="label" className="text-[#B0B0B0] mb-3 block">
-            DÚVIDAS FREQUENTES
+            {t("faq.badge")}
           </Typography>
           <Typography
             variant="h2"
             className="text-4xl md:text-5xl font-bold text-[#0A0A0A]"
           >
-            Perguntas comuns sobre a Postable
+            {t("faq.heading")}
           </Typography>
         </div>
 

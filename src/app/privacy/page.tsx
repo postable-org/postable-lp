@@ -3,12 +3,6 @@ import { Header } from "@/components/organisms/Header";
 import { Footer } from "@/components/organisms/Footer";
 import { LandingPageTemplate } from "@/components/templates/LandingPageTemplate";
 
-export const metadata = {
-  title: "Política de Privacidade | Postable",
-  description:
-    "Conheça a política de privacidade do Postable e entenda como tratamos seus dados com segurança e transparência.",
-};
-
 export default function PrivacyPage() {
   return (
     <LandingPageTemplate

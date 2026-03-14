@@ -1,29 +1,32 @@
 import { Button } from '@/components/atoms/Button';
 import { Typography } from '@/components/atoms/Typography';
+import { useTranslation } from '@/hooks/useTranslation';
 
 export const FinalCTASection = () => {
+  const { t } = useTranslation();
+
   return (
     <section className="bg-[#F5F5F5] py-16 md:py-24 px-4">
       <div className="max-w-2xl mx-auto bg-white border border-[#E0E0E0] rounded-2xl p-10 md:p-16">
         <div className="flex flex-col items-center text-center gap-6">
           {/* Headline */}
           <Typography variant="h2">
-            Seus concorrentes não vão esperar.
+            {t("finalCta.heading")}
           </Typography>
 
           {/* Sub-copy */}
           <Typography variant="body">
-            Comece seu teste gratuito de 7 dias. Sem cartão de crédito necessário.
+            {t("finalCta.subtitle")}
           </Typography>
 
           {/* CTA Button */}
           <Button variant="primary" size="lg">
-            Começar teste grátis de 7 dias
+            {t("finalCta.ctaButton")}
           </Button>
 
           {/* Micro-copy */}
           <Typography variant="caption">
-            Sem cartão de crédito · Cancele quando quiser · Primeiro post em menos de 10 minutos
+            {t("finalCta.microcopy")}
           </Typography>
         </div>
       </div>

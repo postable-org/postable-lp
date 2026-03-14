@@ -6,52 +6,50 @@ import { Button } from "@/components/atoms/Button";
 import { Icon } from "@/components/atoms/Icon";
 import { Typography } from "@/components/atoms/Typography";
 import { HowItWorksTab } from "@/components/molecules/HowItWorksTab";
+import { useTranslation } from "@/hooks/useTranslation";
 import type { IconName } from "@/components/atoms/Icon";
 
 interface Step {
   number: string;
-  tab: string;
+  iconKey: string;
   icon: IconName;
-  title: string;
-  description: string;
+  titleKey: string;
+  descriptionKey: string;
 }
 
 const STEPS: Step[] = [
   {
     number: "01",
-    tab: "Onboarding",
+    iconKey: "tabs.0",
     icon: "zap",
-    title: "Informe seu nicho e cidade",
-    description:
-      "Em menos de 5 minutos você configura seu perfil: tipo de negócio, cidade e público-alvo. Sem formulários longos, sem configurações técnicas.",
+    titleKey: "howItWorks.steps.0.title",
+    descriptionKey: "howItWorks.steps.0.description",
   },
   {
     number: "02",
-    tab: "Análise",
+    iconKey: "tabs.1",
     icon: "chart",
-    title: "Mapeamos seus concorrentes locais",
-    description:
-      "Nossa IA identifica automaticamente os 3 principais concorrentes da sua região e analisa o que eles postam — frequência, temas e engajamento.",
+    titleKey: "howItWorks.steps.1.title",
+    descriptionKey: "howItWorks.steps.1.description",
   },
   {
     number: "03",
-    tab: "Gap",
+    iconKey: "tabs.2",
     icon: "target",
-    title: "Encontramos o espaço vazio",
-    description:
-      "Com base na análise competitiva, detectamos os tópicos que nenhum concorrente cobre. Esse é o seu espaço para dominar a conversa local.",
+    titleKey: "howItWorks.steps.2.title",
+    descriptionKey: "howItWorks.steps.2.description",
   },
   {
     number: "04",
-    tab: "Publicação",
+    iconKey: "tabs.3",
     icon: "check",
-    title: "Posts prontos, você aprova",
-    description:
-      "A Postable gera os posts com base nos gaps identificados. Você revisa, ajusta se quiser e aprova. A publicação é agendada automaticamente.",
+    titleKey: "howItWorks.steps.3.title",
+    descriptionKey: "howItWorks.steps.3.description",
   },
 ];
 
 export const HowItWorksSection = () => {
+  const { t } = useTranslation();
   const [activeStep, setActiveStep] = useState(0);
 
   const step = STEPS[activeStep];
@@ -61,12 +59,12 @@ export const HowItWorksSection = () => {
       <div className="max-w-7xl mx-auto px-4">
         {/* Section header */}
         <div className="flex flex-col items-center text-center gap-4 mb-10 md:mb-12">
-          <Badge variant="default">Como funciona</Badge>
+          <Badge variant="default">{t("howItWorks.badge")}</Badge>
           <Typography
             variant="h2"
             className="max-w-2xl text-[#0A0A0A]"
           >
-            Do onboarding ao primeiro post em menos de 10 minutos.
+            {t("howItWorks.heading")}
           </Typography>
         </div>
 
@@ -76,7 +74,7 @@ export const HowItWorksSection = () => {
             <HowItWorksTab
               key={s.number}
               stepNumber={s.number}
-              label={s.tab}
+              label={t(`howItWorks.tabs.${i}`)}
               active={activeStep === i}
               onClick={() => setActiveStep(i)}
             />
@@ -100,7 +98,7 @@ export const HowItWorksSection = () => {
 
           {/* Title */}
           <Typography variant="h3" className="text-[#0A0A0A] mb-3">
-            {step.title}
+            {t(step.titleKey)}
           </Typography>
 
           {/* Description */}
@@ -108,14 +106,14 @@ export const HowItWorksSection = () => {
             variant="body"
             className="text-[#6B6B6B] max-w-xl"
           >
-            {step.description}
+            {t(step.descriptionKey)}
           </Typography>
         </div>
 
         {/* CTA */}
         <div className="mt-8 flex justify-center">
           <Button variant="primary" size="md">
-            Começar agora — 7 dias grátis
+            {t("howItWorks.cta")}
           </Button>
         </div>
       </div>

@@ -1,0 +1,54 @@
+{
+  "badge": "TESTIMONIALS",
+  "heading": "SMBs already posting with strategy.",
+  "items": [
+    {
+      "authorName": "Ana Carvalho",
+      "authorRole": "Nutritionist",
+      "authorCity": "Belo Horizonte",
+      "avatarInitials": "AC",
+      "highlightedPhrase": "I discovered gaps no competitor of mine covers.",
+      "fullQuote": "I discovered gaps no competitor of mine covers. Now I'm posting topics nobody in my city addresses — result: 3x more WhatsApp leads."
+    },
+    {
+      "authorName": "Rafael Moura",
+      "authorRole": "Personal Trainer",
+      "authorCity": "São Paulo",
+      "avatarInitials": "RM",
+      "highlightedPhrase": "My WhatsApp was flooded with leads without spending a dime on ads.",
+      "fullQuote": "My WhatsApp was flooded with leads without spending a dime on ads. Posts go straight to my local audience — exactly what I needed."
+    },
+    {
+      "authorName": "Camila Teixeira",
+      "authorRole": "Career Consultant",
+      "authorCity": "Curitiba",
+      "avatarInitials": "CT",
+      "highlightedPhrase": "Posts are tailored to my city's reality.",
+      "fullQuote": "Posts are tailored to my city's reality. Not generic templates — it's local strategy. Game-changer for me."
+    },
+    {
+      "authorName": "Dr. Pedro Alves",
+      "authorRole": "Dentist",
+      "authorCity": "Porto Alegre",
+      "avatarInitials": "PA",
+      "highlightedPhrase": "I save $1,800/month that I used to pay a freelancer.",
+      "fullQuote": "I save $1,800/month that I used to pay a freelancer. Same quality, fraction of the cost. No complaints."
+    },
+    {
+      "authorName": "Luiza Fernandes",
+      "authorRole": "SaaS Founder",
+      "authorCity": "Recife",
+      "avatarInitials": "LF",
+      "highlightedPhrase": "Professional content without needing marketing knowledge.",
+      "fullQuote": "Professional content without needing marketing knowledge. Postable handles everything — analysis, generation, scheduling. I focus on the product."
+    },
+    {
+      "authorName": "Dra. Marta Santos",
+      "authorRole": "Physical Therapist",
+      "authorCity": "Florianópolis",
+      "avatarInitials": "MS",
+      "highlightedPhrase": "I became the authority in a niche my city wasn't addressing.",
+      "fullQuote": "I became the authority in a niche my city wasn't addressing. Now I'm the go-to reference. Nothing but gratitude."
+    }
+  ]
+}

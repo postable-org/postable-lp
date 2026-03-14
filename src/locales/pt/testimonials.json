@@ -1,0 +1,55 @@
+{
+  "badge": "DEPOIMENTOS",
+  "heading": "PMEs brasileiras que já postam com estratégia.",
+  "items": [
+    {
+      "authorName": "Ana Carvalho",
+      "authorRole": "Nutricionista",
+      "authorCity": "Belo Horizonte",
+      "avatarInitials": "AC",
+      "highlightedPhrase": "Descobri lacunas que nenhum concorrente meu cobre.",
+      "fullQuote": "Descobri lacunas que nenhum concorrente meu cobre. Agora estou postando temas que ninguém na minha cidade aborda — resultado: 3x mais leads no WhatsApp."
+    },
+    {
+      "authorName": "Rafael Moura",
+      "authorRole": "Personal Trainer",
+      "authorCity": "São Paulo",
+      "avatarInitials": "RM",
+      "highlightedPhrase": "Meu WhatsApp lotou de leads sem pagar um centavo em anúncio.",
+      "fullQuote": "Meu WhatsApp lotou de leads sem pagar um centavo em anúncio. Os posts vão direto para meu público local — exatamente o que eu precisava."
+    },
+    {
+      "authorName": "Camila Teixeira",
+      "authorRole": "Consultora de Carreira",
+      "authorCity": "Curitiba",
+      "avatarInitials": "CT",
+      "highlightedPhrase": "Os posts são pensados para a realidade da minha cidade.",
+      "fullQuote": "Os posts são pensados para a realidade da minha cidade. Não é template genérico — é estratégia local. Mudou o jogo para mim."
+    },
+    {
+      "authorName": "Dr. Pedro Alves",
+      "authorRole": "Dentista",
+      "authorCity": "Porto Alegre",
+      "avatarInitials": "PA",
+      "highlightedPhrase": "Economizo R$1.800 por mês que pagava a uma freelancer.",
+      "fullQuote": "Economizo R$1.800 por mês que pagava a uma freelancer. A qualidade é a mesma, o custo é uma fração. Não tenho do que reclamar."
+    },
+    {
+      "authorName": "Luiza Fernandes",
+      "authorRole": "Fundadora de SaaS",
+      "authorCity": "Recife",
+      "avatarInitials": "LF",
+      "highlightedPhrase": "Conteúdo profissional sem precisar entender de marketing.",
+      "fullQuote": "Conteúdo profissional sem precisar entender de marketing. A Postable cuida de tudo — análise, geração, agendamento. Voltei a focar no produto."
+    },
+    {
+      "authorName": "Dra. Marta Santos",
+      "authorRole": "Fisioterapeuta",
+      "authorCity": "Florianópolis",
+      "avatarInitials": "MS",
+      "highlightedPhrase": "Passei a dominar um nicho de assunto que ninguém na minha cidade abordava.",
+      "fullQuote": "Passei a dominar um nicho de assunto que ninguém na minha cidade abordava. Agora sou referência. Só tenho a agradecer."
+    }
+  ]
+}
+

@@ -1,0 +1,37 @@
+{
+  "badge": "Como funciona",
+  "heading": "Do onboarding ao primeiro post em menos de 10 minutos.",
+  "cta": "Começar agora — 7 dias grátis",
+  "tabs": [
+    "Onboarding",
+    "Análise",
+    "Gap",
+    "Publicação"
+  ],
+  "steps": [
+    {
+      "label": "01",
+      "stepLabel": "Step 1",
+      "title": "Informe seu nicho e cidade",
+      "description": "Em menos de 5 minutos você configura seu perfil: tipo de negócio, cidade e público-alvo. Sem formulários longos, sem configurações técnicas."
+    },
+    {
+      "label": "02",
+      "stepLabel": "Step 2",
+      "title": "Mapeamos seus concorrentes locais",
+      "description": "Nossa IA identifica automaticamente os 3 principais concorrentes da sua região e analisa o que eles postam — frequência, temas e engajamento."
+    },
+    {
+      "label": "03",
+      "stepLabel": "Step 3",
+      "title": "Encontramos o espaço vazio",
+      "description": "Com base na análise competitiva, detectamos os tópicos que nenhum concorrente cobre. Esse é o seu espaço para dominar a conversa local."
+    },
+    {
+      "label": "04",
+      "stepLabel": "Step 4",
+      "title": "Posts prontos, você aprova",
+      "description": "A Postable gera os posts com base nos gaps identificados. Você revisa, ajusta se quiser e aprova. A publicação é agendada automaticamente."
+    }
+  ]
+}

@@ -1,6 +1,14 @@
 import type { Metadata } from "next";
-import { Inter, DM_Sans, Fraunces, Questrial, Geist } from "next/font/google";
+import { Inter, DM_Sans, Fraunces, Questrial, Geist, Plus_Jakarta_Sans } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
+import { LanguageProvider } from "@/context/LanguageContext";
+
+const stratford = localFont({
+  src: "./fonts/Stratford-Regular.ttf",
+  variable: "--font-stratford",
+  weight: "400",
+});
 
 const inter = Inter({
   variable: "--font-inter",
@@ -28,6 +36,11 @@ const geist = Geist({
   subsets: ["latin"],
 });
 
+const plusJakartaSans = Plus_Jakarta_Sans({
+  variable: "--font-plus-jakarta-sans",
+  subsets: ["latin"],
+});
+
 export const metadata: Metadata = {
   title: "Postable — Conteúdo estratégico que gera leads",
   description:
@@ -41,8 +54,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body className={`${inter.variable} ${dmSans.variable} ${fraunces.variable} ${questrial.variable} ${geist.variable} antialiased`}>
-        {children}
+      <body className={`${inter.variable} ${dmSans.variable} ${fraunces.variable} ${questrial.variable} ${geist.variable} ${plusJakartaSans.variable} ${stratford.variable} antialiased`}>
+        <LanguageProvider>{children}</LanguageProvider>
       </body>
     </html>
   );
