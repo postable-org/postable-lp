@@ -58,10 +58,20 @@ export const Header = () => {
             ))}
           </nav>
 
-          {/* Language Switcher and CTA */}
+          {/* Language Switcher, Login, and CTA */}
           <div className="flex items-center gap-4">
             <LanguageSwitcher variant="desktop" />
-            <Button variant="primary" size="sm">
+            <a
+              href="https://app.thepostable.com/login"
+              className="inline-flex items-center justify-center gap-2 font-medium rounded-lg transition-all duration-200 ease-out focus:outline-none focus:ring-2 focus:ring-[#0A0A0A] focus:ring-offset-2 disabled:opacity-40 disabled:cursor-not-allowed bg-transparent text-[#0A0A0A] border border-transparent hover:bg-[#F5F5F5] px-3 py-1.5 text-sm"
+            >
+              {t("header.login")}
+            </a>
+            <Button
+              variant="primary"
+              size="sm"
+              className="!bg-gradient-to-r !from-[#A5C8FA] !to-[#3B82F6] !text-[#0A0A0A] !border-none !rounded-full hover:opacity-90 shadow-sm"
+            >
               {t("header.cta")}
             </Button>
           </div>
@@ -101,8 +111,14 @@ export const Header = () => {
               </NavItem>
             ))}
             <LanguageSwitcher variant="mobile" />
-            <div className="pt-2 border-t border-[#E0E0E0]">
-              <Button variant="primary" size="sm" onClick={closeDrawer} className="w-full">
+            <div className="pt-2 border-t border-[#E0E0E0] flex flex-col gap-3">
+              <a
+                href="https://app.thepostable.com/login"
+                className="inline-flex items-center justify-center gap-2 font-medium rounded-lg transition-all duration-200 ease-out focus:outline-none focus:ring-2 focus:ring-[#0A0A0A] focus:ring-offset-2 disabled:opacity-40 disabled:cursor-not-allowed bg-transparent text-[#0A0A0A] border border-transparent hover:bg-[#F5F5F5] px-3 py-1.5 text-sm"
+              >
+                {t("header.login")}
+              </a>
+              <Button variant="primary" size="sm" onClick={closeDrawer} className="w-full !bg-gradient-to-r !from-[#A5C8FA] !to-[#8AB4F8] !text-[#0A0A0A] !border-none !rounded-full hover:opacity-90 shadow-sm">
                 {t("header.cta")}
               </Button>
             </div>
