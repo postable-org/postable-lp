@@ -1,10 +1,7 @@
 'use client';
 
-import { useState } from 'react';
-import { Badge } from '@/components/atoms/Badge';
+import { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/atoms/Button';
-import { Typography } from '@/components/atoms/Typography';
-import { PricingFeatureItem } from '@/components/molecules/PricingFeatureItem';
 import { useTranslation } from '@/hooks/useTranslation';
 
 type BillingInterval = 'monthly' | 'annual';
@@ -18,9 +15,28 @@ interface PricingPlan {
   features: string[];
 }
 
+const CheckIcon = () => (
+  <svg width={14} height={14} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <polyline points="20 6 9 17 4 12" />
+  </svg>
+);
+
 export const PricingSection = () => {
   const { t } = useTranslation();
   const [billingInterval, setBillingInterval] = useState<BillingInterval>('monthly');
+  const headerRef = useRef<HTMLDivElement>(null);
+  const cardsRef = useRef<HTMLDivElement[]>([]);
+
+  useEffect(() => {
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => { if (entry.isIntersecting) entry.target.classList.add('revealed'); });
+      },
+      { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
+    );
+    [headerRef.current, ...cardsRef.current].forEach((el) => { if (el) obs.observe(el); });
+    return () => obs.disconnect();
+  }, []);
 
   const pricingPlans: PricingPlan[] = [
     {
@@ -67,120 +83,321 @@ export const PricingSection = () => {
     },
   ];
 
-  const getPrice = (plan: PricingPlan): number => {
-    return billingInterval === 'monthly' ? plan.monthlyPrice : plan.annualPrice;
-  };
+  const getPrice = (plan: PricingPlan): number =>
+    billingInterval === 'monthly' ? plan.monthlyPrice : plan.annualPrice;
 
   return (
-    <section id="precos" className="py-16 md:py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="flex flex-col items-center gap-6 mb-12">
-          <span className="text-base font-mono font-light tracking-wider uppercase" style={{ color: '#809cc4' }}>{t('pricing.badge')}</span>
-          <Typography variant="h2" className="text-center">
-            {t('pricing.heading')}
-          </Typography>
-        </div>
+    <section
+      id="precos"
+      className="relative py-20 md:py-32 overflow-hidden"
+      style={{ background: '#080912' }}
+    >
+      {/* Background ambient */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: 'radial-gradient(ellipse 80% 50% at 50% 0%, rgba(56,189,248,0.06) 0%, transparent 60%)',
+        }}
+        aria-hidden="true"
+      />
+      <div
+        className="absolute inset-0 pointer-events-none opacity-[0.025]"
+        style={{
+          backgroundImage: `
+            linear-gradient(rgba(56,189,248,1) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(56,189,248,1) 1px, transparent 1px)
+          `,
+          backgroundSize: '60px 60px',
+        }}
+        aria-hidden="true"
+      />
 
-        <div className="flex flex-col items-center gap-6 mb-12">
-          <div className="flex items-center gap-4">
-            <button
-              onClick={() => setBillingInterval('monthly')}
-              className={[
-                'px-4 py-2 rounded-full font-medium transition-all',
-                'font-[family-name:var(--font-inter)] text-sm',
-                'focus:outline-none focus:ring-2 focus:ring-[#0A0A0A]',
-                billingInterval === 'monthly'
-                  ? 'bg-[#0A0A0A] text-white'
-                  : 'bg-transparent text-[#6B6B6B] hover:text-[#0A0A0A]',
-              ].join(' ')}
+      <div className="relative max-w-7xl mx-auto px-4">
+        {/* Header */}
+        <div
+          ref={headerRef}
+          className="reveal flex flex-col items-center gap-6 mb-12"
+        >
+          <span
+            className="inline-flex items-center gap-2 text-xs font-mono tracking-widest uppercase"
+            style={{ color: '#38BDF8' }}
+          >
+            <span
+              className="w-1.5 h-1.5 rounded-full inline-block animate-pulse"
+              style={{ background: '#38BDF8', boxShadow: '0 0 6px #38BDF8' }}
+            />
+            {t('pricing.badge')}
+          </span>
+          <h2
+            className="font-[family-name:var(--font-fraunces)] font-normal text-4xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tight text-center"
+            style={{ color: '#ffffff' }}
+          >
+            {t('pricing.heading')}
+          </h2>
+
+          {/* Billing toggle */}
+          <div className="flex items-center gap-3 mt-2">
+            <div
+              className="relative flex items-center p-1 rounded-full"
+              style={{
+                background: 'rgba(255,255,255,0.05)',
+                border: '1px solid rgba(255,255,255,0.1)',
+              }}
+              role="group"
+              aria-label="Billing interval"
             >
-              {t('pricing.billingMonthly')}
-            </button>
-            <button
-              onClick={() => setBillingInterval('annual')}
-              className={[
-                'px-4 py-2 rounded-full font-medium transition-all',
-                'font-[family-name:var(--font-inter)] text-sm',
-                'focus:outline-none focus:ring-2 focus:ring-[#0A0A0A]',
-                billingInterval === 'annual'
-                  ? 'bg-[#0A0A0A] text-white'
-                  : 'bg-transparent text-[#6B6B6B] hover:text-[#0A0A0A]',
-              ].join(' ')}
-            >
-              {t('pricing.billingAnnual')}
-            </button>
+              {(['monthly', 'annual'] as BillingInterval[]).map((interval) => (
+                <button
+                  key={interval}
+                  onClick={() => setBillingInterval(interval)}
+                  className="relative px-5 py-2 rounded-full text-sm font-medium transition-all duration-250 focus:outline-none"
+                  style={{
+                    color: billingInterval === interval ? '#080912' : 'rgba(255,255,255,0.5)',
+                    background: billingInterval === interval
+                      ? 'linear-gradient(135deg, #38BDF8, #0EA5E9)'
+                      : 'transparent',
+                    boxShadow: billingInterval === interval
+                      ? '0 0 20px rgba(56,189,248,0.3)'
+                      : 'none',
+                  }}
+                >
+                  {interval === 'monthly' ? t('pricing.billingMonthly') : t('pricing.billingAnnual')}
+                </button>
+              ))}
+            </div>
             {billingInterval === 'annual' && (
-              <Badge variant="default" className="ml-2">
+              <span
+                className="text-xs font-mono font-semibold px-2.5 py-1 rounded-full"
+                style={{
+                  background: 'rgba(56,189,248,0.15)',
+                  border: '1px solid rgba(56,189,248,0.3)',
+                  color: '#38BDF8',
+                }}
+              >
                 {t('pricing.discount')}
-              </Badge>
+              </span>
             )}
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-          {pricingPlans.map((plan) => (
+        {/* Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10">
+          {pricingPlans.map((plan, i) => (
             <div
               key={plan.name}
-              className={[
-                'rounded-xl p-8 border flex flex-col h-full',
-                'transition-all duration-200',
-                plan.featured
-                  ? 'border-2 border-[#0A0A0A] bg-[#F5F5F5] shadow-sm'
-                  : 'border border-[#E0E0E0] bg-white hover:border-[#0A0A0A]',
-              ].join(' ')}
+              ref={(el) => { if (el) cardsRef.current[i] = el; }}
+              className={['reveal', i === 0 ? '' : i === 1 ? 'reveal-delay-1' : 'reveal-delay-2'].join(' ')}
             >
-              <div className="mb-6">
-                <Badge variant="outline" className="mb-4">
-                  {t('pricing.trialBadge')}
-                </Badge>
-              </div>
-
-              <div className="mb-2">
-                <Typography
-                  variant="h3"
-                  className={[
-                    'text-2xl md:text-3xl',
-                    plan.featured ? 'text-[#0A0A0A]' : 'text-[#0A0A0A]',
-                  ].join(' ')}
+              {plan.featured ? (
+                /* ── FEATURED CARD ── */
+                <div
+                  className="relative rounded-2xl p-px overflow-hidden h-full"
+                  style={{
+                    background: 'linear-gradient(135deg, rgba(56,189,248,0.6) 0%, rgba(14,165,233,0.2) 50%, rgba(56,189,248,0.4) 100%)',
+                    animation: 'pulseGlow 3s ease-in-out infinite',
+                  }}
                 >
-                  {plan.name}
-                </Typography>
-              </div>
+                  {/* Shimmer sweep */}
+                  <div
+                    className="absolute inset-0 pointer-events-none overflow-hidden rounded-2xl"
+                    aria-hidden="true"
+                  >
+                    <div
+                      className="absolute top-0 bottom-0 w-1/3"
+                      style={{
+                        background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent)',
+                        animation: 'shimmer 3s linear infinite',
+                      }}
+                    />
+                  </div>
 
-              <div className="mb-6 flex items-baseline gap-1">
-                <span className="font-[family-name:var(--font-dm-sans)] font-bold text-4xl text-[#0A0A0A]">
-                  R${getPrice(plan)}
-                </span>
-                <Typography variant="caption" className="text-[#6B6B6B]">
-                  {t('pricing.perMonth')}
-                </Typography>
-              </div>
+                  <div
+                    className="relative rounded-[14px] p-8 flex flex-col h-full"
+                    style={{ background: '#0F1628' }}
+                  >
+                    {/* Most Popular badge */}
+                    <div className="mb-6">
+                      <span
+                        className="inline-flex items-center gap-1.5 text-xs font-mono font-semibold tracking-widest uppercase px-3 py-1.5 rounded-full"
+                        style={{
+                          background: 'linear-gradient(135deg, rgba(56,189,248,0.2), rgba(56,189,248,0.05))',
+                          border: '1px solid rgba(56,189,248,0.4)',
+                          color: '#38BDF8',
+                        }}
+                      >
+                        <span
+                          className="w-1.5 h-1.5 rounded-full animate-pulse"
+                          style={{ background: '#38BDF8', boxShadow: '0 0 6px #38BDF8' }}
+                        />
+                        {t('pricing.trialBadge')}
+                      </span>
+                    </div>
 
-              <div className="mb-6">
-                <Typography variant="body" className="text-[#6B6B6B]">
-                  {plan.posts}
-                </Typography>
-              </div>
+                    <p
+                      className="font-[family-name:var(--font-dm-sans)] font-bold text-2xl mb-2"
+                      style={{ color: '#ffffff' }}
+                    >
+                      {plan.name}
+                    </p>
 
-              <div className="mb-8 flex-grow">
-                <ul className="space-y-3">
-                  {plan.features.map((feature) => (
-                    <PricingFeatureItem key={feature}>{feature}</PricingFeatureItem>
-                  ))}
-                </ul>
-              </div>
+                    <div className="flex items-baseline gap-1 mb-3">
+                      <span
+                        className="font-[family-name:var(--font-dm-sans)] font-black text-5xl"
+                        style={{ color: '#38BDF8' }}
+                      >
+                        R${getPrice(plan)}
+                      </span>
+                      <span
+                        className="text-sm font-medium"
+                        style={{ color: 'rgba(255,255,255,0.4)' }}
+                      >
+                        {t('pricing.perMonth')}
+                      </span>
+                    </div>
 
-              <Button variant="primary" size="lg" className="w-full">
-                {t('pricing.ctaButton')}
-              </Button>
+                    <p
+                      className="text-sm mb-6"
+                      style={{ color: 'rgba(255,255,255,0.5)' }}
+                    >
+                      {plan.posts}
+                    </p>
+
+                    <ul className="flex flex-col gap-3 mb-8 flex-grow">
+                      {plan.features.map((feature) => (
+                        <li key={feature} className="flex items-start gap-3">
+                          <span
+                            className="mt-0.5 shrink-0 w-5 h-5 rounded-full flex items-center justify-center"
+                            style={{
+                              background: 'rgba(56,189,248,0.15)',
+                              color: '#38BDF8',
+                            }}
+                          >
+                            <CheckIcon />
+                          </span>
+                          <span
+                            className="text-sm font-[family-name:var(--font-inter)]"
+                            style={{ color: 'rgba(255,255,255,0.75)' }}
+                          >
+                            {feature}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    <button
+                      className="w-full py-3.5 rounded-xl font-[family-name:var(--font-dm-sans)] font-bold text-base transition-all duration-200 hover:opacity-90 hover:scale-[1.02] active:scale-[0.98]"
+                      style={{
+                        background: 'linear-gradient(135deg, #38BDF8, #0EA5E9)',
+                        color: '#080912',
+                        boxShadow: '0 4px 20px rgba(56,189,248,0.4)',
+                      }}
+                    >
+                      {t('pricing.ctaButton')}
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                /* ── REGULAR CARD ── */
+                <div
+                  className="relative rounded-2xl p-8 flex flex-col h-full group transition-all duration-300 hover:-translate-y-1"
+                  style={{
+                    background: 'rgba(255,255,255,0.03)',
+                    border: '1px solid rgba(255,255,255,0.08)',
+                  }}
+                >
+                  <div
+                    className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                    style={{ border: '1px solid rgba(56,189,248,0.2)' }}
+                    aria-hidden="true"
+                  />
+
+                  <div className="mb-6">
+                    <span
+                      className="inline-block text-xs font-mono tracking-widest uppercase px-3 py-1.5 rounded-full"
+                      style={{
+                        background: 'rgba(255,255,255,0.05)',
+                        border: '1px solid rgba(255,255,255,0.1)',
+                        color: 'rgba(255,255,255,0.4)',
+                      }}
+                    >
+                      {t('pricing.trialBadge')}
+                    </span>
+                  </div>
+
+                  <p
+                    className="font-[family-name:var(--font-dm-sans)] font-bold text-2xl mb-2"
+                    style={{ color: '#ffffff' }}
+                  >
+                    {plan.name}
+                  </p>
+
+                  <div className="flex items-baseline gap-1 mb-3">
+                    <span
+                      className="font-[family-name:var(--font-dm-sans)] font-black text-5xl"
+                      style={{ color: '#ffffff' }}
+                    >
+                      R${getPrice(plan)}
+                    </span>
+                    <span
+                      className="text-sm font-medium"
+                      style={{ color: 'rgba(255,255,255,0.35)' }}
+                    >
+                      {t('pricing.perMonth')}
+                    </span>
+                  </div>
+
+                  <p
+                    className="text-sm mb-6"
+                    style={{ color: 'rgba(255,255,255,0.4)' }}
+                  >
+                    {plan.posts}
+                  </p>
+
+                  <ul className="flex flex-col gap-3 mb-8 flex-grow">
+                    {plan.features.map((feature) => (
+                      <li key={feature} className="flex items-start gap-3">
+                        <span
+                          className="mt-0.5 shrink-0 w-5 h-5 rounded-full flex items-center justify-center"
+                          style={{
+                            background: 'rgba(255,255,255,0.06)',
+                            color: 'rgba(255,255,255,0.5)',
+                          }}
+                        >
+                          <CheckIcon />
+                        </span>
+                        <span
+                          className="text-sm font-[family-name:var(--font-inter)]"
+                          style={{ color: 'rgba(255,255,255,0.55)' }}
+                        >
+                          {feature}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <button
+                    className="relative w-full py-3.5 rounded-xl font-[family-name:var(--font-dm-sans)] font-bold text-base transition-all duration-200 hover:opacity-90"
+                    style={{
+                      background: 'rgba(255,255,255,0.06)',
+                      border: '1px solid rgba(255,255,255,0.12)',
+                      color: '#ffffff',
+                    }}
+                  >
+                    {t('pricing.ctaButton')}
+                  </button>
+                </div>
+              )}
             </div>
           ))}
         </div>
 
         <div className="text-center">
-          <Typography variant="caption" className="text-[#B0B0B0]">
+          <p
+            className="font-[family-name:var(--font-inter)] text-xs"
+            style={{ color: 'rgba(255,255,255,0.3)' }}
+          >
             {t('pricing.disclaimer')}
-          </Typography>
+          </p>
         </div>
       </div>
     </section>

@@ -22,7 +22,8 @@ export const PricingFeatureItem = ({
         strokeWidth={2.5}
         strokeLinecap="round"
         strokeLinejoin="round"
-        className="shrink-0 mt-0.5 text-[#0A0A0A]"
+        className="shrink-0 mt-0.5"
+        style={{ color: '#38BDF8' }}
         aria-hidden="true"
       >
         <polyline points="20 6 9 17 4 12" />

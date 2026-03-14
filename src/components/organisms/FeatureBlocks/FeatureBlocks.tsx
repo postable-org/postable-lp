@@ -57,7 +57,14 @@ const FeatureBlock = ({ block }: FeatureBlockProps) => {
   );
 
   const videoCol = (
-    <div className="relative rounded-xl border border-[#E0E0E0] overflow-hidden bg-[#F5F5F5] aspect-video lg:col-span-3">
+    <div
+      className="relative rounded-xl overflow-hidden bg-[#F5F5F5] aspect-video lg:col-span-3"
+      style={{
+        border: '1px solid #E0E0E0',
+        borderTop: '3px solid #38BDF8',
+        boxShadow: '0 4px 24px rgba(56,189,248,0.08)',
+      }}
+    >
       {!isLoaded && (
         <div className="absolute inset-0 animate-pulse bg-[#E0E0E0]" />
       )}
@@ -70,6 +77,7 @@ const FeatureBlock = ({ block }: FeatureBlockProps) => {
         playsInline
         onLoadedData={() => setIsLoaded(true)}
         className="w-full h-full object-cover"
+        style={{ animation: 'stepSwitch 0.3s ease-out both' }}
       />
     </div>
   );

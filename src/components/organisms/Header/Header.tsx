@@ -47,7 +47,7 @@ export const Header = () => {
           : 'bg-transparent py-2',
       ].join(' ')}
     >
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 flex items-center justify-between">
         {/* Desktop layout */}
         <div className="hidden md:flex items-center justify-between w-full">
           {/* Logo */}
@@ -56,7 +56,7 @@ export const Header = () => {
             className="flex items-center font-stratford text-2xl text-[#0A0A0A] transition-opacity"
             onClick={(e) => handleNavClick(e as React.MouseEvent<HTMLAnchorElement>, '/')}
           >
-            <Image src="/logo.png" alt="Postable Logo" width={78} height={78} className="w-20 h-20 object-contain" />
+            <Image src="/logo.png" alt="Postable Logo" width={40} height={40} className="w-10 h-10 object-contain" />
             Postable
           </Link>
 
@@ -84,7 +84,8 @@ export const Header = () => {
             <Button
               variant="primary"
               size="sm"
-              className="!bg-gradient-to-r !from-[#A5C8FA] !to-[#3B82F6] !text-[#0A0A0A] !border-none !rounded-full hover:opacity-90 shadow-sm"
+              className="!border-none !rounded-full hover:opacity-90"
+            style={{ background: 'linear-gradient(135deg, #38BDF8, #0EA5E9)', color: '#080912', boxShadow: '0 2px 12px rgba(56,189,248,0.35)' } as React.CSSProperties}
             >
               {t("header.cta")}
             </Button>
@@ -143,7 +144,7 @@ export const Header = () => {
               >
                 {t("header.login")}
               </a>
-              <Button variant="primary" size="sm" onClick={closeDrawer} className="w-full !bg-gradient-to-r !from-[#A5C8FA] !to-[#8AB4F8] !text-[#0A0A0A] !border-none !rounded-full hover:opacity-90 shadow-sm">
+              <Button variant="primary" size="sm" onClick={closeDrawer} className="w-full !border-none !rounded-full hover:opacity-90" style={{ background: 'linear-gradient(135deg, #38BDF8, #0EA5E9)', color: '#080912' } as React.CSSProperties}>
                 {t("header.cta")}
               </Button>
             </div>

@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme inline {
-  /* Colors */
+  /* Light palette */
   --color-background: #ffffff;
   --color-surface: #f5f5f5;
   --color-primary: #0a0a0a;
@@ -9,6 +9,15 @@
   --color-muted: #b0b0b0;
   --color-border: #e0e0e0;
   --color-hero-blue: #A5C8FA;
+
+  /* Dark palette — new */
+  --color-ink: #080912;
+  --color-ink-mid: #12132A;
+  --color-ink-soft: #1C1E38;
+  --color-electric: #38BDF8;
+  --color-electric-vivid: #0EA5E9;
+  --color-electric-dim: rgba(56,189,248,0.12);
+  --color-electric-glow: rgba(56,189,248,0.25);
 
   /* Fonts */
   --font-sans: var(--font-inter);
@@ -20,25 +29,117 @@
 
   /* Shadows */
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-electric: 0 0 30px rgba(56,189,248,0.3), 0 0 60px rgba(56,189,248,0.1);
 
   /* Motion */
   --ease-snappy: ease-out;
   --duration-snappy: 200ms;
 
   /* Animations */
-  --animate-fade-up: fadeUp 0.2s ease-out both;
+  --animate-fade-up: fadeUp 0.5s cubic-bezier(0.16,1,0.3,1) both;
+  --animate-slide-in-left: slideInLeft 0.5s cubic-bezier(0.16,1,0.3,1) both;
+  --animate-scale-in: scaleIn 0.4s cubic-bezier(0.16,1,0.3,1) both;
+  --animate-float-y: floatY 5s ease-in-out infinite;
+  --animate-spin-slow: spinSlow 18s linear infinite;
+  --animate-pulse-glow: pulseGlow 3s ease-in-out infinite;
+  --animate-shimmer: shimmer 2.5s linear infinite;
+  --animate-marquee: marquee 28s linear infinite;
+  --animate-gradient-flow: gradientFlow 6s ease infinite;
 }
 
+/* ─── Keyframes ─────────────────────────────────────────── */
+
 @keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-16px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.94); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes floatY {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-12px); }
+}
+
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes stepSwitch {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scrollBounce {
+  0%, 100% { transform: translateY(0); opacity: 1; }
+  50%       { transform: translateY(8px); opacity: 0.35; }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 20px rgba(56,189,248,0.2), 0 0 40px rgba(56,189,248,0.05); }
+  50%       { box-shadow: 0 0 40px rgba(56,189,248,0.45), 0 0 80px rgba(56,189,248,0.15); }
+}
+
+@keyframes shimmer {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(300%); }
+}
+
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes gradientFlow {
+  0%, 100% { background-position: 0% 50%; }
+  50%       { background-position: 100% 50%; }
+}
+
+@keyframes orb1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(30px, -20px) scale(1.05); }
+  66%       { transform: translate(-15px, 25px) scale(0.97); }
+}
+
+@keyframes orb2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  40%       { transform: translate(-25px, 20px) scale(1.08); }
+  70%       { transform: translate(20px, -15px) scale(0.95); }
+}
+
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Scroll Reveal ────────────────────────────────────── */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
+}
+
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.08s; }
+.reveal-delay-2 { transition-delay: 0.16s; }
+.reveal-delay-3 { transition-delay: 0.24s; }
+.reveal-delay-4 { transition-delay: 0.32s; }
+
+/* ─── Global ─────────────────────────────────────────────── */
 
 body {
   background: var(--color-background);

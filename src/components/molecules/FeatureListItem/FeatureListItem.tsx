@@ -12,12 +12,13 @@ export const FeatureListItem = ({
       className={[
         "flex items-center gap-3 w-full text-left px-4 py-3 rounded-lg",
         "transition-all duration-200 ease-out",
-        "focus:outline-none focus:ring-2 focus:ring-[#0A0A0A] focus:ring-offset-2",
+        "focus:outline-none focus:ring-2 focus:ring-[#A5C8FA] focus:ring-offset-2",
         active
-          ? "bg-[#F5F5F5] border border-[#0A0A0A]"
+          ? "border"
           : "bg-transparent border border-transparent hover:bg-[#F5F5F5]",
         className,
       ].join(" ")}
+      style={active ? { borderColor: '#38BDF8', backgroundColor: 'rgba(56,189,248,0.07)' } : undefined}
       {...props}
     >
       <span
@@ -25,10 +26,9 @@ export const FeatureListItem = ({
           "inline-flex items-center justify-center w-7 h-7 rounded-full shrink-0",
           "font-[family-name:var(--font-inter)] text-xs font-semibold",
           "transition-colors duration-200 ease-out",
-          active
-            ? "bg-[#0A0A0A] text-white"
-            : "bg-[#E0E0E0] text-[#6B6B6B]",
+          active ? "" : "bg-[#E0E0E0] text-[#6B6B6B]",
         ].join(" ")}
+        style={active ? { backgroundColor: '#38BDF8', color: '#080912' } : undefined}
       >
         {number}
       </span>
