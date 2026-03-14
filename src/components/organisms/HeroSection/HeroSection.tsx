@@ -5,7 +5,19 @@ import { useTranslation } from '@/hooks/useTranslation';
 export const HeroSection = () => {
   const { t } = useTranslation();
   return (
-    <section className="bg-white min-h-screen flex items-center px-4" style={{ paddingTop: '10vh', paddingBottom: '10vh' }}>
+    <section
+      className="min-h-screen flex items-center px-4"
+      style={{
+        paddingTop: '10vh',
+        paddingBottom: '10vh',
+        background: `
+          radial-gradient(ellipse 60% 50% at 15% 25%, #D4E4F7 0%, transparent 80%),
+          radial-gradient(ellipse 60% 50% at 50% 65%, #BDE0FE 0%, transparent 80%),
+          radial-gradient(ellipse 60% 50% at 85% 10%, #C8E7FA 0%, transparent 80%),
+          #ffffff
+        `,
+      }}
+    >
       <div className="max-w-7xl mx-auto flex flex-col items-center text-center gap-6">
         {/* Headline */}
         <div

@@ -8,6 +8,7 @@
   --color-secondary: #6b6b6b;
   --color-muted: #b0b0b0;
   --color-border: #e0e0e0;
+  --color-hero-blue: #A5C8FA;
 
   /* Fonts */
   --font-sans: var(--font-inter);

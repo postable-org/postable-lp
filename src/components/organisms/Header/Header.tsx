@@ -63,9 +63,9 @@ export const Header = () => {
             <LanguageSwitcher variant="desktop" />
             <a
               href="https://app.thepostable.com/login"
-              className="inline-flex items-center justify-center gap-2 font-medium rounded-lg transition-all duration-200 ease-out focus:outline-none focus:ring-2 focus:ring-[#0A0A0A] focus:ring-offset-2 disabled:opacity-40 disabled:cursor-not-allowed bg-transparent text-[#0A0A0A] border border-transparent hover:bg-[#F5F5F5] px-3 py-1.5 text-sm"
+              className="inline-flex items-center justify-center gap-2 font-medium rounded-lg transition-all duration-200 ease-out focus:outline-none focus:ring-2 focus:ring-gray-800 focus:ring-offset-2 disabled:opacity-40 disabled:cursor-not-allowed bg-transparent text-gray-700 border border-transparent hover:text-black px-3 py-1.5 text-sm"
             >
-              {t("header.login")}
+              Login
             </a>
             <Button
               variant="primary"
