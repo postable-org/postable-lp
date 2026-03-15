@@ -46,9 +46,6 @@ export const metadata: Metadata = {
   title: "Postable — Conteúdo estratégico que gera leads",
   description:
     "Postable analisa seus concorrentes locais, identifica os temas que eles ignoram e gera posts estratégicos para você ganhar visibilidade sem precisar de agência.",
-  icons: {
-    icon: "/logo.webp",
-  },
 };
 
 export default function RootLayout({
