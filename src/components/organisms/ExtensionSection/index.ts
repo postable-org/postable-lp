@@ -1,1 +1,0 @@
-export { ExtensionSection } from "./ExtensionSection";
