@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import Image from 'next/image';
 import { Button } from '@/components/atoms/Button';
 import { Typography } from '@/components/atoms/Typography';
 import { useTranslation } from '@/hooks/useTranslation';
@@ -30,10 +31,10 @@ export const HeroSection = () => {
         className="absolute inset-0 pointer-events-none"
         style={{
           background: `
-            radial-gradient(ellipse 90% 70% at 15% 20%, rgba(165,200,250,0.45) 0%, transparent 60%),
-            radial-gradient(ellipse 70% 60% at 85% 75%, rgba(165,200,250,0.28) 0%, transparent 60%),
-            radial-gradient(ellipse 50% 40% at 50% 95%, rgba(200,231,250,0.2) 0%, transparent 65%),
-            radial-gradient(ellipse 40% 30% at 80% 10%, rgba(56,189,248,0.08) 0%, transparent 60%)
+            radial-gradient(ellipse 90% 70% at 15% 20%, rgba(175,204,248,0.5) 0%, transparent 60%),
+            radial-gradient(ellipse 70% 60% at 85% 75%, rgba(156,195,240,0.4) 0%, transparent 60%),
+            radial-gradient(ellipse 50% 40% at 50% 95%, rgba(182,215,250,0.3) 0%, transparent 65%),
+            radial-gradient(ellipse 40% 30% at 80% 10%, rgba(140,180,244,0.15) 0%, transparent 60%)
           `,
         }}
         aria-hidden="true"
@@ -48,7 +49,7 @@ export const HeroSection = () => {
           top: '5%',
           left: '-8%',
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(165,200,250,0.28) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(175,204,248,0.35) 0%, transparent 70%)',
           animation: 'orb1 14s ease-in-out infinite',
           filter: 'blur(40px)',
         }}
@@ -64,7 +65,7 @@ export const HeroSection = () => {
           bottom: '10%',
           right: '-5%',
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(165,200,250,0.22) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(156,195,240,0.3) 0%, transparent 70%)',
           animation: 'orb2 18s ease-in-out infinite',
           filter: 'blur(50px)',
         }}
@@ -143,7 +144,7 @@ export const HeroSection = () => {
 
       {/* Scroll cue */}
       <div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 z-10"
+        className="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 z-10"
         aria-hidden="true"
       >
         <span
@@ -166,25 +167,7 @@ export const HeroSection = () => {
       </div>
 
       {/* Content */}
-      <div ref={contentRef} className="relative max-w-7xl mx-auto flex flex-col items-center text-center gap-7 z-10">
-        {/* Eyebrow badge */}
-        <div className="animate-fade-up" style={{ animationDelay: '0ms' }}>
-          <span
-            className="inline-flex items-center gap-2 text-xs font-mono tracking-widest uppercase px-4 py-2 rounded-full border"
-            style={{
-              color: '#0EA5E9',
-              borderColor: 'rgba(56,189,248,0.4)',
-              backgroundColor: 'rgba(56,189,248,0.06)',
-              letterSpacing: '0.12em',
-            }}
-          >
-            <span
-              className="w-1.5 h-1.5 rounded-full inline-block shrink-0 animate-pulse"
-              style={{ background: '#38BDF8', boxShadow: '0 0 6px rgba(56,189,248,0.8)' }}
-            />
-            Postable
-          </span>
-        </div>
+      <div ref={contentRef} className="relative max-w-7xl mx-auto flex flex-col items-center text-center gap-7 z-10 mt-14">
 
         {/* Headline */}
         <div
@@ -242,7 +225,7 @@ export const HeroSection = () => {
           </Button>
           <a
             href="#como-funciona"
-            className="inline-flex items-center justify-center gap-2 font-medium transition-all duration-200 ease-out bg-white/80 text-[#0A0A0A] border border-[#E0E0E0] hover:border-[#A5C8FA] hover:bg-white rounded-full px-9 py-3.5 text-lg focus:outline-none focus:ring-2 focus:ring-[#38BDF8] focus:ring-offset-2"
+            className="inline-flex items-center justify-center gap-2 font-medium transition-all duration-200 ease-out bg-[#F0F1F5] text-[#0A0A0A] border border-[#E0E0E0] hover:border-[#A5C8FA] hover:bg-white rounded-full px-9 py-3.5 text-lg focus:outline-none focus:ring-2 focus:ring-[#38BDF8] focus:ring-offset-2"
           >
             {t("hero.secondaryCTA")}
           </a>
@@ -253,15 +236,25 @@ export const HeroSection = () => {
           className="animate-fade-up flex items-center gap-2"
           style={{ animationDelay: '250ms' }}
         >
-          <div className="flex -space-x-1">
-            {['AM', 'CL', 'RF'].map((initials, i) => (
-              <span
-                key={i}
-                className="w-6 h-6 rounded-full flex items-center justify-center text-[9px] font-bold border-2 border-white"
-                style={{ background: 'linear-gradient(135deg, #38BDF8, #0EA5E9)', color: '#080912' }}
+          <div className="flex -space-x-2">
+            {[
+              { name: 'Fabio', src: '/images/founders/Fabio.jpg' },
+              { name: 'Leo', src: '/images/founders/Leo.jpg' },
+              { name: 'Lodi', src: '/images/founders/Lodi.jpg' },
+              { name: 'Rafael', src: '/images/founders/Rafael.jpg' }
+            ].map((founder, i) => (
+              <div 
+                key={i} 
+                className="relative w-6 h-6 rounded-full border-2 border-white overflow-hidden shadow-sm"
               >
-                {initials}
-              </span>
+                <Image
+                  src={founder.src}
+                  alt={founder.name}
+                  fill
+                  className="object-cover"
+                  sizes="24px"
+                />
+              </div>
             ))}
           </div>
           <span

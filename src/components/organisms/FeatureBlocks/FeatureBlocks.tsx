@@ -26,32 +26,21 @@ interface FeatureBlockProps {
 }
 
 const FeatureBlock = ({ block }: FeatureBlockProps) => {
-  const [activeItem, setActiveItem] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
-
-  const handleItemClick = (index: number) => {
-    if (index === activeItem) return;
-    setActiveItem(index);
-    setIsLoaded(false);
-  };
 
   const textCol = (
     <div className="flex flex-col gap-5 lg:col-span-2">
-      <Badge variant="outline">{block.badge}</Badge>
+      <Badge variant="outline" className="w-fit">{block.badge}</Badge>
       <div className="flex flex-col gap-2">
         <Typography variant="h3">{block.title}</Typography>
         <Typography variant="body">{block.subtitle}</Typography>
       </div>
       <div className="flex flex-col gap-2 mt-2">
-        {block.items.map((item, index) => (
-          <FeatureListItem
-            key={item.number}
-            number={item.number}
-            label={item.label}
-            active={activeItem === index}
-            onClick={() => handleItemClick(index)}
-          />
-        ))}
+        <FeatureListItem
+          number="1"
+          label={block.items[0].label}
+          active={true}
+        />
       </div>
     </div>
   );
@@ -69,8 +58,8 @@ const FeatureBlock = ({ block }: FeatureBlockProps) => {
         <div className="absolute inset-0 animate-pulse bg-[#E0E0E0]" />
       )}
       <video
-        key={block.items[activeItem].videoSrc}
-        src={block.items[activeItem].videoSrc}
+        key={block.id}
+        src={block.items[0].videoSrc}
         autoPlay
         muted
         loop
@@ -93,17 +82,10 @@ const FeatureBlock = ({ block }: FeatureBlockProps) => {
             .join(" ")
             .trim()}
         >
-          {block.reversed ? (
-            <>
-              {videoCol}
-              {textCol}
-            </>
-          ) : (
-            <>
-              {textCol}
-              {videoCol}
-            </>
-          )}
+          <>
+            {textCol}
+            {videoCol}
+          </>
         </div>
       </div>
     </section>
@@ -126,16 +108,6 @@ export const FeatureBlocks = () => {
           label: t("featureBlocks.blocks.0.items.0"),
           videoSrc: "/videos/feature-1-1.mp4",
         },
-        {
-          number: "2",
-          label: t("featureBlocks.blocks.0.items.1"),
-          videoSrc: "/videos/feature-1-2.mp4",
-        },
-        {
-          number: "3",
-          label: t("featureBlocks.blocks.0.items.2"),
-          videoSrc: "/videos/feature-1-3.mp4",
-        },
       ],
     },
     {
@@ -149,16 +121,6 @@ export const FeatureBlocks = () => {
           number: "1",
           label: t("featureBlocks.blocks.1.items.0"),
           videoSrc: "/videos/feature-2-1.mp4",
-        },
-        {
-          number: "2",
-          label: t("featureBlocks.blocks.1.items.1"),
-          videoSrc: "/videos/feature-2-2.mp4",
-        },
-        {
-          number: "3",
-          label: t("featureBlocks.blocks.1.items.2"),
-          videoSrc: "/videos/feature-2-3.mp4",
         },
       ],
     },
@@ -174,16 +136,6 @@ export const FeatureBlocks = () => {
           label: t("featureBlocks.blocks.2.items.0"),
           videoSrc: "/videos/feature-3-1.mp4",
         },
-        {
-          number: "2",
-          label: t("featureBlocks.blocks.2.items.1"),
-          videoSrc: "/videos/feature-3-2.mp4",
-        },
-        {
-          number: "3",
-          label: t("featureBlocks.blocks.2.items.2"),
-          videoSrc: "/videos/feature-3-3.mp4",
-        },
       ],
     },
     {
@@ -198,16 +150,6 @@ export const FeatureBlocks = () => {
           label: t("featureBlocks.blocks.3.items.0"),
           videoSrc: "/videos/feature-4-1.mp4",
         },
-        {
-          number: "2",
-          label: t("featureBlocks.blocks.3.items.1"),
-          videoSrc: "/videos/feature-4-2.mp4",
-        },
-        {
-          number: "3",
-          label: t("featureBlocks.blocks.3.items.2"),
-          videoSrc: "/videos/feature-4-3.mp4",
-        },
       ],
     },
     {
@@ -221,16 +163,6 @@ export const FeatureBlocks = () => {
           number: "1",
           label: t("featureBlocks.blocks.4.items.0"),
           videoSrc: "/videos/feature-5-1.mp4",
-        },
-        {
-          number: "2",
-          label: t("featureBlocks.blocks.4.items.1"),
-          videoSrc: "/videos/feature-5-2.mp4",
-        },
-        {
-          number: "3",
-          label: t("featureBlocks.blocks.4.items.2"),
-          videoSrc: "/videos/feature-5-3.mp4",
         },
       ],
     },

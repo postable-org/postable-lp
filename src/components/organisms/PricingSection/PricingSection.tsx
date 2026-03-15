@@ -241,11 +241,19 @@ export const PricingSection = () => {
                     </p>
 
                     <div className="flex items-baseline gap-1 mb-3">
+                      {billingInterval === 'annual' && (
+                        <span
+                          className="font-heading font-bold text-2xl line-through mr-1"
+                          style={{ color: 'rgba(255,255,255,0.3)' }}
+                        >
+                          R$ {plan.monthlyPrice}
+                        </span>
+                      )}
                       <span
-                        className="font-[family-name:var(--font-dm-sans)] font-black text-5xl"
+                        className="font-heading font-black text-5xl"
                         style={{ color: '#38BDF8' }}
                       >
-                        R${getPrice(plan)}
+                        R$ {getPrice(plan)}
                       </span>
                       <span
                         className="text-sm font-medium"
@@ -332,11 +340,19 @@ export const PricingSection = () => {
                   </p>
 
                   <div className="flex items-baseline gap-1 mb-3">
+                    {billingInterval === 'annual' && (
+                      <span
+                        className="font-heading font-bold text-2xl line-through mr-1"
+                        style={{ color: 'rgba(255,255,255,0.2)' }}
+                      >
+                        R$ {plan.monthlyPrice}
+                      </span>
+                    )}
                     <span
-                      className="font-[family-name:var(--font-dm-sans)] font-black text-5xl"
+                      className="font-heading font-black text-5xl"
                       style={{ color: '#ffffff' }}
                     >
-                      R${getPrice(plan)}
+                      R$ {getPrice(plan)}
                     </span>
                     <span
                       className="text-sm font-medium"

@@ -15,7 +15,7 @@ export const Footer = () => {
         <div className="flex flex-col items-center md:items-start gap-2">
           {/* Wordmark */}
           <Link href="/" className="flex items-center font-stratford text-2xl text-[#0A0A0A] hover:opacity-80 transition-opacity">
-            <Image src="/logo.png" alt="Postable Logo" width={76} height={76} className="object-contain" />
+            <Image src="/logo.png" alt="Postable Logo" width={35} height={35} className="object-contain" />
             Postable
           </Link>
           {/* Tagline */}

@@ -9,7 +9,6 @@ import { FeaturesIntro } from "@/components/organisms/FeaturesIntro";
 import { FeatureBlocks } from "@/components/organisms/FeatureBlocks";
 import { TestimonialsSection } from "@/components/organisms/TestimonialsSection";
 import { VideoDemoSection } from "@/components/organisms/VideoDemoSection";
-import { ExtensionSection } from "@/components/organisms/ExtensionSection";
 import { PricingSection } from "@/components/organisms/PricingSection";
 import { FAQSection } from "@/components/organisms/FAQSection";
 import { FinalCTASection } from "@/components/organisms/FinalCTASection";
@@ -29,7 +28,6 @@ export default function Home() {
         <FeatureBlocks />,
         <TestimonialsSection />,
         <VideoDemoSection />,
-        <ExtensionSection />,
         <PricingSection />,
         <FAQSection />,
         <FinalCTASection />,

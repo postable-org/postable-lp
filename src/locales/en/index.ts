@@ -6,7 +6,6 @@ import featuresIntro from "./features-intro.json";
 import features from "./features.json";
 import featureBlocks from "./feature-blocks.json";
 import trustStrip from "./trust-strip.json";
-import extension from "./extension.json";
 import testimonials from "./testimonials.json";
 import pricing from "./pricing.json";
 import faq from "./faq.json";
@@ -23,7 +22,6 @@ const en = {
   features,
   featureBlocks,
   trustStrip,
-  extension,
   testimonials,
   pricing,
   faq,
