@@ -1,7 +1,28 @@
 {
   "brand": "Postable",
   "tagline": "Strategic content that generates leads.",
-  "termsLink": "Terms of Use",
-  "privacyLink": "Privacy Policy",
-  "copyright": "© 2026 Postable. All rights reserved."
+  "sections": {
+    "product": {
+      "title": "Product",
+      "features": "Features",
+      "pricing": "Pricing",
+      "premium": "Premium",
+      "faq": "FAQ"
+    },
+    "company": {
+      "title": "Company",
+      "about": "About",
+      "blog": "Blog",
+      "roadmap": "Roadmap",
+      "openSource": "Open Source"
+    },
+    "legal": {
+      "title": "Legal",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service",
+      "security": "Data Security",
+      "contact": "Contact"
+    }
+  },
+  "copyright": "© 2026 Postable. Strategic content made with AI."
 }

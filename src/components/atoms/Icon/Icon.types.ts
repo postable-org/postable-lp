@@ -13,7 +13,12 @@ export type IconName =
   | "target"
   | "star"
   | "menu"
-  | "play";
+  | "play"
+  | "twitter"
+  | "x-twitter"
+  | "instagram"
+  | "linkedin"
+  | "tiktok";
 
 export interface IconProps extends SVGAttributes<SVGElement> {
   name: IconName;

@@ -139,7 +139,9 @@
 .reveal-delay-3 { transition-delay: 0.24s; }
 .reveal-delay-4 { transition-delay: 0.32s; }
 
-/* ─── Global ─────────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   background: var(--color-background);

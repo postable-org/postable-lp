@@ -7,18 +7,20 @@ import { NavItem } from "@/components/molecules/NavItem";
 import { useTranslation } from "@/hooks/useTranslation";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const NAV_LINKS = [
-  { labelKey: "header.howItWorks", href: "#como-funciona" },
-  { labelKey: "header.features", href: "#funcionalidades" },
-  { labelKey: "header.pricing", href: "#precos" },
+  { labelKey: "header.howItWorks", href: "/#como-funciona" },
+  { labelKey: "header.features", href: "/#funcionalidades" },
+  { labelKey: "header.pricing", href: "/#precos" },
 ];
 
 const APP_LOGIN_URL = "https://app.thepostable.com/login";
 
 export const Header = () => {
   const { t } = useTranslation();
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -34,13 +36,22 @@ export const Header = () => {
     e: React.MouseEvent<HTMLAnchorElement>,
     href: string,
   ) => {
-    e.preventDefault();
+    // If we're not on the home page, let the default Link behavior take over
+    if (pathname !== "/") return;
+
+    // On home page, if it's just "/", scroll to top
     if (href === "/") {
+      e.preventDefault();
       window.scrollTo({ top: 0, behavior: "smooth" });
       return;
     }
-    const id = href.replace("#", "");
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+
+    // On home page, handle anchor scrolling
+    if (href.startsWith("/#")) {
+      e.preventDefault();
+      const id = href.replace("/#", "");
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   return (
