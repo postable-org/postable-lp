@@ -276,9 +276,8 @@ export const HowItWorksSection = () => {
                   loop
                   muted
                   playsInline
-                  controls
                   preload="auto"
-                  className="w-full h-full object-cover"
+                  className="pointer-events-none w-full h-full object-cover"
                 >
                   <source src={step.video} type="video/mp4" />
                   Your browser does not support the video tag.
