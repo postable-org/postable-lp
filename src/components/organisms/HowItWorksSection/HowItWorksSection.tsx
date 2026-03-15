@@ -15,10 +15,18 @@ interface Step {
   titleKey: string;
   descriptionKey: string;
   image?: string;
+  video?: string;
 }
 
 const STEPS: Step[] = [
-  { number: "01", iconKey: "tabs.0", icon: "zap", titleKey: "howItWorks.steps.0.title", descriptionKey: "howItWorks.steps.0.description", image: "" },
+  { 
+    number: "01", 
+    iconKey: "tabs.0", 
+    icon: "zap", 
+    titleKey: "howItWorks.steps.0.title", 
+    descriptionKey: "howItWorks.steps.0.description", 
+    video: "/onborading.mp4" 
+  },
   { number: "02", iconKey: "tabs.1", icon: "chart", titleKey: "howItWorks.steps.1.title", descriptionKey: "howItWorks.steps.1.description", image: "" },
   { number: "03", iconKey: "tabs.2", icon: "target", titleKey: "howItWorks.steps.2.title", descriptionKey: "howItWorks.steps.2.description", image: "" },
   { number: "04", iconKey: "tabs.3", icon: "check", titleKey: "howItWorks.steps.3.title", descriptionKey: "howItWorks.steps.3.description", image: "" },
@@ -205,10 +213,23 @@ export const HowItWorksSection = () => {
               className="rounded-xl overflow-hidden border min-h-[320px] md:min-h-[400px] bg-gray-50 flex items-center justify-center"
               style={{
                 borderColor: '#E0E0E0',
-                borderStyle: 'dashed',
+                borderStyle: step.video || step.image ? 'solid' : 'dashed',
               }}
             >
-              {step.image ? (
+              {step.video ? (
+                <video
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  controls
+                  preload="auto"
+                  className="w-full h-full object-cover"
+                >
+                  <source src={step.video} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              ) : step.image ? (
                 <img
                   src={step.image}
                   alt={t(step.titleKey)}
