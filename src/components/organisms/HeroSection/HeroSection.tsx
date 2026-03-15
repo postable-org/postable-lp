@@ -1,10 +1,12 @@
-'use client';
+"use client";
 
-import { useEffect, useRef } from 'react';
-import Image from 'next/image';
-import { Button } from '@/components/atoms/Button';
-import { Typography } from '@/components/atoms/Typography';
-import { useTranslation } from '@/hooks/useTranslation';
+import { Button } from "@/components/atoms/Button";
+import { Typography } from "@/components/atoms/Typography";
+import { useTranslation } from "@/hooks/useTranslation";
+import Image from "next/image";
+import { useEffect, useRef } from "react";
+
+const APP_LOGIN_URL = "https://app.thepostable.com/login";
 
 export const HeroSection = () => {
   const { t } = useTranslation();
@@ -21,9 +23,9 @@ export const HeroSection = () => {
     <section
       className="relative min-h-screen flex items-center px-4 overflow-hidden"
       style={{
-        paddingTop: '10vh',
-        paddingBottom: '10vh',
-        background: '#ffffff',
+        paddingTop: "10vh",
+        paddingBottom: "10vh",
+        background: "#ffffff",
       }}
     >
       {/* Gradient mesh background */}
@@ -44,14 +46,15 @@ export const HeroSection = () => {
       <div
         className="absolute pointer-events-none"
         style={{
-          width: '520px',
-          height: '520px',
-          top: '5%',
-          left: '-8%',
-          borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(175,204,248,0.35) 0%, transparent 70%)',
-          animation: 'orb1 14s ease-in-out infinite',
-          filter: 'blur(40px)',
+          width: "520px",
+          height: "520px",
+          top: "5%",
+          left: "-8%",
+          borderRadius: "50%",
+          background:
+            "radial-gradient(circle, rgba(175,204,248,0.35) 0%, transparent 70%)",
+          animation: "orb1 14s ease-in-out infinite",
+          filter: "blur(40px)",
         }}
         aria-hidden="true"
       />
@@ -60,14 +63,15 @@ export const HeroSection = () => {
       <div
         className="absolute pointer-events-none"
         style={{
-          width: '380px',
-          height: '380px',
-          bottom: '10%',
-          right: '-5%',
-          borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(156,195,240,0.3) 0%, transparent 70%)',
-          animation: 'orb2 18s ease-in-out infinite',
-          filter: 'blur(50px)',
+          width: "380px",
+          height: "380px",
+          bottom: "10%",
+          right: "-5%",
+          borderRadius: "50%",
+          background:
+            "radial-gradient(circle, rgba(156,195,240,0.3) 0%, transparent 70%)",
+          animation: "orb2 18s ease-in-out infinite",
+          filter: "blur(50px)",
         }}
         aria-hidden="true"
       />
@@ -76,10 +80,13 @@ export const HeroSection = () => {
       <div
         className="absolute inset-0 pointer-events-none select-none"
         style={{
-          backgroundImage: 'radial-gradient(circle, rgba(56,189,248,0.5) 1px, transparent 1px)',
-          backgroundSize: '40px 40px',
-          maskImage: 'radial-gradient(ellipse 85% 85% at 50% 50%, black 10%, transparent 100%)',
-          WebkitMaskImage: 'radial-gradient(ellipse 85% 85% at 50% 50%, black 10%, transparent 100%)',
+          backgroundImage:
+            "radial-gradient(circle, rgba(56,189,248,0.5) 1px, transparent 1px)",
+          backgroundSize: "40px 40px",
+          maskImage:
+            "radial-gradient(ellipse 85% 85% at 50% 50%, black 10%, transparent 100%)",
+          WebkitMaskImage:
+            "radial-gradient(ellipse 85% 85% at 50% 50%, black 10%, transparent 100%)",
           opacity: 0.25,
         }}
         aria-hidden="true"
@@ -89,28 +96,28 @@ export const HeroSection = () => {
       <div
         className="absolute pointer-events-none select-none"
         style={{
-          width: '720px',
-          height: '720px',
-          border: '1px solid rgba(165,200,250,0.2)',
-          borderRadius: '50%',
-          top: '50%',
-          right: '-14%',
-          transform: 'translateY(-50%)',
-          animation: 'spinSlow 22s linear infinite',
+          width: "720px",
+          height: "720px",
+          border: "1px solid rgba(165,200,250,0.2)",
+          borderRadius: "50%",
+          top: "50%",
+          right: "-14%",
+          transform: "translateY(-50%)",
+          animation: "spinSlow 22s linear infinite",
         }}
         aria-hidden="true"
       />
       <div
         className="absolute pointer-events-none select-none"
         style={{
-          width: '480px',
-          height: '480px',
-          border: '1px solid rgba(165,200,250,0.14)',
-          borderRadius: '50%',
-          top: '50%',
-          right: '-3%',
-          transform: 'translateY(-50%)',
-          animation: 'spinSlow 32s linear infinite reverse',
+          width: "480px",
+          height: "480px",
+          border: "1px solid rgba(165,200,250,0.14)",
+          borderRadius: "50%",
+          top: "50%",
+          right: "-3%",
+          transform: "translateY(-50%)",
+          animation: "spinSlow 32s linear infinite reverse",
         }}
         aria-hidden="true"
       />
@@ -118,26 +125,26 @@ export const HeroSection = () => {
       <div
         className="absolute pointer-events-none"
         style={{
-          width: '12px',
-          height: '12px',
-          borderRadius: '50%',
-          background: '#38BDF8',
-          top: 'calc(50% - 360px)',
-          right: 'calc(-14% + 360px)',
-          boxShadow: '0 0 20px 6px rgba(56,189,248,0.4)',
+          width: "12px",
+          height: "12px",
+          borderRadius: "50%",
+          background: "#38BDF8",
+          top: "calc(50% - 360px)",
+          right: "calc(-14% + 360px)",
+          boxShadow: "0 0 20px 6px rgba(56,189,248,0.4)",
         }}
         aria-hidden="true"
       />
       <div
         className="absolute pointer-events-none"
         style={{
-          width: '8px',
-          height: '8px',
-          borderRadius: '50%',
-          background: '#A5C8FA',
-          top: 'calc(50% + 220px)',
-          right: 'calc(-3% - 10px)',
-          boxShadow: '0 0 12px 4px rgba(165,200,250,0.5)',
+          width: "8px",
+          height: "8px",
+          borderRadius: "50%",
+          background: "#A5C8FA",
+          top: "calc(50% + 220px)",
+          right: "calc(-3% - 10px)",
+          boxShadow: "0 0 12px 4px rgba(165,200,250,0.5)",
         }}
         aria-hidden="true"
       />
@@ -149,46 +156,69 @@ export const HeroSection = () => {
       >
         <span
           className="text-[10px] font-mono tracking-[0.2em] uppercase"
-          style={{ color: '#B0B0B0' }}
+          style={{ color: "#B0B0B0" }}
         >
           scroll
         </span>
         <div
           className="flex flex-col items-center gap-0.5"
-          style={{ animation: 'scrollBounce 1.8s ease-in-out infinite' }}
+          style={{ animation: "scrollBounce 1.8s ease-in-out infinite" }}
         >
-          <svg width={14} height={14} viewBox="0 0 24 24" fill="none" stroke="#B0B0B0" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+          <svg
+            width={14}
+            height={14}
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#B0B0B0"
+            strokeWidth={2}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
             <polyline points="6 9 12 15 18 9" />
           </svg>
-          <svg width={14} height={14} viewBox="0 0 24 24" fill="none" stroke="rgba(176,176,176,0.4)" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+          <svg
+            width={14}
+            height={14}
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="rgba(176,176,176,0.4)"
+            strokeWidth={2}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
             <polyline points="6 9 12 15 18 9" />
           </svg>
         </div>
       </div>
 
       {/* Content */}
-      <div ref={contentRef} className="relative max-w-7xl mx-auto flex flex-col items-center text-center gap-7 z-10 mt-14">
-
+      <div
+        ref={contentRef}
+        className="relative max-w-7xl mx-auto flex flex-col items-center text-center gap-7 z-10 mt-14"
+      >
         {/* Headline */}
         <div
           className="animate-fade-up flex flex-col items-center"
-          style={{ animationDelay: '70ms' }}
+          style={{ animationDelay: "70ms" }}
         >
-          <h1
-            className="font-[family-name:var(--font-fraunces)] font-normal text-5xl md:text-7xl lg:text-[5.5rem] leading-[1.04] tracking-tight text-[#1C1917] max-w-5xl"
-          >
+          <h1 className="font-[family-name:var(--font-fraunces)] font-normal text-5xl md:text-7xl lg:text-[5.5rem] leading-[1.04] tracking-tight text-[#1C1917] max-w-5xl">
             {t("hero.heading")}
           </h1>
         </div>
 
         {/* Separator */}
-        <div className="animate-fade-up" style={{ animationDelay: '110ms' }} aria-hidden="true">
+        <div
+          className="animate-fade-up"
+          style={{ animationDelay: "110ms" }}
+          aria-hidden="true"
+        >
           <div
             style={{
-              width: '56px',
-              height: '2px',
-              background: 'linear-gradient(90deg, transparent, #38BDF8 40%, #38BDF8 60%, transparent)',
-              borderRadius: '2px',
+              width: "56px",
+              height: "2px",
+              background:
+                "linear-gradient(90deg, transparent, #38BDF8 40%, #38BDF8 60%, transparent)",
+              borderRadius: "2px",
             }}
           />
         </div>
@@ -196,7 +226,7 @@ export const HeroSection = () => {
         {/* Subtitle */}
         <div
           className="animate-fade-up max-w-xl"
-          style={{ animationDelay: '130ms' }}
+          style={{ animationDelay: "130ms" }}
         >
           <Typography
             variant="body"
@@ -209,17 +239,23 @@ export const HeroSection = () => {
         {/* CTAs */}
         <div
           className="mt-6 animate-fade-up flex flex-col sm:flex-row items-center gap-4 z-10 w-full justify-center"
-          style={{ animationDelay: '190ms' }}
+          style={{ animationDelay: "190ms" }}
         >
           <Button
             variant="primary"
             size="lg"
+            onClick={() => {
+              window.location.href = APP_LOGIN_URL;
+            }}
             className="!rounded-full !px-9 !py-3.5 !text-lg !border-none !font-bold transition-all hover:scale-[1.03] active:scale-[0.98]"
-            style={{
-              background: 'linear-gradient(135deg, #38BDF8, #0EA5E9)',
-              color: '#080912',
-              boxShadow: '0 4px 24px rgba(56,189,248,0.4), 0 0 50px rgba(56,189,248,0.12)',
-            } as React.CSSProperties}
+            style={
+              {
+                background: "linear-gradient(135deg, #38BDF8, #0EA5E9)",
+                color: "#080912",
+                boxShadow:
+                  "0 4px 24px rgba(56,189,248,0.4), 0 0 50px rgba(56,189,248,0.12)",
+              } as React.CSSProperties
+            }
           >
             {t("hero.primaryCTA")}
           </Button>
@@ -234,17 +270,17 @@ export const HeroSection = () => {
         {/* Trust micro-copy */}
         <div
           className="animate-fade-up flex items-center gap-2"
-          style={{ animationDelay: '250ms' }}
+          style={{ animationDelay: "250ms" }}
         >
           <div className="flex -space-x-2">
             {[
-              { name: 'Fabio', src: '/images/founders/Fabio.jpg' },
-              { name: 'Leo', src: '/images/founders/Leo.jpg' },
-              { name: 'Lodi', src: '/images/founders/Lodi.jpg' },
-              { name: 'Rafael', src: '/images/founders/Rafael.jpg' }
+              { name: "Fabio", src: "/images/founders/Fabio.jpg" },
+              { name: "Leo", src: "/images/founders/Leo.jpg" },
+              { name: "Lodi", src: "/images/founders/Lodi.jpg" },
+              { name: "Rafael", src: "/images/founders/Rafael.jpg" },
             ].map((founder, i) => (
-              <div 
-                key={i} 
+              <div
+                key={i}
                 className="relative w-6 h-6 rounded-full border-2 border-white overflow-hidden shadow-sm"
               >
                 <Image
@@ -259,7 +295,7 @@ export const HeroSection = () => {
           </div>
           <span
             className="text-xs font-[family-name:var(--font-inter)]"
-            style={{ color: '#9CA3AF' }}
+            style={{ color: "#9CA3AF" }}
           >
             +200 criadores já usam o Postable
           </span>
