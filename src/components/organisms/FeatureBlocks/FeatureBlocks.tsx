@@ -7,9 +7,10 @@ import { FeatureListItem } from "@/components/molecules/FeatureListItem";
 import { useTranslation } from "@/hooks/useTranslation";
 
 interface SubFeature {
-  number: string;
+  number?: string;
   label: string;
-  videoSrc: string;
+  videoSrc?: string;
+  imageSrc?: string;
 }
 
 interface FeatureBlockData {
@@ -35,9 +36,8 @@ const FeatureBlock = ({ block }: FeatureBlockProps) => {
         <Typography variant="h3">{block.title}</Typography>
         <Typography variant="body">{block.subtitle}</Typography>
       </div>
-      <div className="flex flex-col gap-2 mt-2">
+      <div className="flex flex-col mt-4 border-t border-b border-[#F0F0F0] overflow-hidden rounded-md">
         <FeatureListItem
-          number="1"
           label={block.items[0].label}
           active={true}
         />
@@ -45,29 +45,39 @@ const FeatureBlock = ({ block }: FeatureBlockProps) => {
     </div>
   );
 
-  const videoCol = (
+  const mediaCol = (
     <div
-      className="relative rounded-xl overflow-hidden bg-[#F5F5F5] aspect-video lg:col-span-3"
+      className="relative rounded-xl overflow-hidden bg-[#F5F5F5] aspect-video lg:col-span-3 flex items-center justify-center"
       style={{
         border: '1px solid #E0E0E0',
         borderTop: '3px solid #38BDF8',
         boxShadow: '0 4px 24px rgba(56,189,248,0.08)',
       }}
     >
-      {!isLoaded && (
+      {!isLoaded && block.items[0].videoSrc && (
         <div className="absolute inset-0 animate-pulse bg-[#E0E0E0]" />
       )}
-      <video
-        key={block.id}
-        src={block.items[0].videoSrc}
-        autoPlay
-        muted
-        loop
-        playsInline
-        onLoadedData={() => setIsLoaded(true)}
-        className="w-full h-full object-cover"
-        style={{ animation: 'stepSwitch 0.3s ease-out both' }}
-      />
+      {block.items[0].videoSrc ? (
+        <video
+          key={block.id + "-video"}
+          src={block.items[0].videoSrc}
+          autoPlay
+          muted
+          loop
+          playsInline
+          onLoadedData={() => setIsLoaded(true)}
+          className="w-full h-full object-cover"
+          style={{ animation: 'stepSwitch 0.3s ease-out both' }}
+        />
+      ) : block.items[0].imageSrc ? (
+        <img
+          key={block.id + "-image"}
+          src={block.items[0].imageSrc}
+          alt={block.title}
+          className="w-full h-full object-cover"
+          style={{ animation: 'stepSwitch 0.3s ease-out both' }}
+        />
+      ) : null}
     </div>
   );
 
@@ -84,7 +94,7 @@ const FeatureBlock = ({ block }: FeatureBlockProps) => {
         >
           <>
             {textCol}
-            {videoCol}
+            {mediaCol}
           </>
         </div>
       </div>
@@ -104,7 +114,6 @@ export const FeatureBlocks = () => {
       reversed: false,
       items: [
         {
-          number: "1",
           label: t("featureBlocks.blocks.0.items.0"),
           videoSrc: "/videos/feature-1-1.mp4",
         },
@@ -118,7 +127,6 @@ export const FeatureBlocks = () => {
       reversed: true,
       items: [
         {
-          number: "1",
           label: t("featureBlocks.blocks.1.items.0"),
           videoSrc: "/videos/feature-2-1.mp4",
         },
@@ -132,9 +140,8 @@ export const FeatureBlocks = () => {
       reversed: false,
       items: [
         {
-          number: "1",
           label: t("featureBlocks.blocks.2.items.0"),
-          videoSrc: "/videos/feature-3-1.mp4",
+          imageSrc: "/Analise.png",
         },
       ],
     },
@@ -146,7 +153,6 @@ export const FeatureBlocks = () => {
       reversed: true,
       items: [
         {
-          number: "1",
           label: t("featureBlocks.blocks.3.items.0"),
           videoSrc: "/videos/feature-4-1.mp4",
         },
@@ -160,7 +166,6 @@ export const FeatureBlocks = () => {
       reversed: false,
       items: [
         {
-          number: "1",
           label: t("featureBlocks.blocks.4.items.0"),
           videoSrc: "/videos/feature-5-1.mp4",
         },

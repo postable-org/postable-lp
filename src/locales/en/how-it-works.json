@@ -5,7 +5,6 @@
   "tabs": [
     "Onboarding",
     "Analysis",
-    "Gap",
     "Publish"
   ],
   "steps": [
@@ -24,12 +23,6 @@
     {
       "label": "03",
       "stepLabel": "Step 3",
-      "title": "We find the gap",
-      "description": "Based on competitive analysis, we detect topics no competitor covers. That's your space to dominate the local conversation."
-    },
-    {
-      "label": "04",
-      "stepLabel": "Step 4",
       "title": "Posts ready, you approve",
       "description": "Postable generates posts based on identified gaps. You review, adjust if needed, and approve. Publishing is automatically scheduled."
     }

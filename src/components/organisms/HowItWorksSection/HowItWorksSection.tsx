@@ -33,22 +33,13 @@ const STEPS: Step[] = [
     icon: "chart",
     titleKey: "howItWorks.steps.1.title",
     descriptionKey: "howItWorks.steps.1.description",
-    image: "",
   },
   {
     number: "03",
     iconKey: "tabs.2",
-    icon: "target",
+    icon: "check",
     titleKey: "howItWorks.steps.2.title",
     descriptionKey: "howItWorks.steps.2.description",
-    image: "",
-  },
-  {
-    number: "04",
-    iconKey: "tabs.3",
-    icon: "check",
-    titleKey: "howItWorks.steps.3.title",
-    descriptionKey: "howItWorks.steps.3.description",
     image: "",
   },
 ];
@@ -264,7 +255,7 @@ export const HowItWorksSection = () => {
 
             {/* Right column - Image */}
             <div
-              className="rounded-xl overflow-hidden border min-h-[320px] md:min-h-[400px] bg-gray-50 flex items-center justify-center"
+              className="relative rounded-xl overflow-hidden border min-h-[320px] md:min-h-[400px] bg-gray-50 flex items-center justify-center"
               style={{
                 borderColor: "#E0E0E0",
                 borderStyle: step.video || step.image ? "solid" : "dashed",
@@ -286,25 +277,9 @@ export const HowItWorksSection = () => {
                 <img
                   src={step.image}
                   alt={t(step.titleKey)}
-                  className="w-full h-full object-cover"
+                  className="absolute inset-0 w-full h-full object-cover"
                 />
-              ) : (
-                <div className="text-center px-4">
-                  <div
-                    className="w-16 h-16 mx-auto mb-3 rounded-lg flex items-center justify-center"
-                    style={{ background: "rgba(56,189,248,0.1)" }}
-                  >
-                    <Icon
-                      name={step.icon}
-                      size={32}
-                      className="text-[#0EA5E9]"
-                    />
-                  </div>
-                  <Typography variant="body" className="text-[#6B6B6B]">
-                    {t(step.titleKey)}
-                  </Typography>
-                </div>
-              )}
+              ) : null}
             </div>
           </div>
         </div>

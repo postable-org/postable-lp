@@ -1,7 +1,7 @@
 import { ButtonHTMLAttributes } from "react";
 
 export interface FeatureListItemProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  number: string;
+  number?: string;
   label: string;
   active?: boolean;
 }

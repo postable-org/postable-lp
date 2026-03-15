@@ -10,34 +10,21 @@ export const FeatureListItem = ({
   return (
     <button
       className={[
-        "flex items-center gap-3 w-full text-left px-4 py-3 rounded-lg",
+        "flex flex-row items-center w-full text-left px-4 py-4 border-b border-[#F0F0F0] last:border-b-0",
         "transition-all duration-200 ease-out",
-        "focus:outline-none focus:ring-2 focus:ring-[#A5C8FA] focus:ring-offset-2",
-        active
-          ? "border"
-          : "bg-transparent border border-transparent hover:bg-[#F5F5F5]",
+        "focus:outline-none focus:ring-0",
+        active ? "bg-[rgba(56,189,248,0.05)] border-l-2" : "bg-transparent hover:bg-gray-50",
         className,
       ].join(" ")}
-      style={active ? { borderColor: '#38BDF8', backgroundColor: 'rgba(56,189,248,0.07)' } : undefined}
+      style={active ? { borderLeftColor: '#38BDF8' } : { borderLeft: '2px solid transparent' }}
       {...props}
     >
       <span
         className={[
-          "inline-flex items-center justify-center w-7 h-7 rounded-full shrink-0",
-          "font-[family-name:var(--font-inter)] text-xs font-semibold",
-          "transition-colors duration-200 ease-out",
-          active ? "" : "bg-[#E0E0E0] text-[#6B6B6B]",
+          "font-[family-name:var(--font-inter)] text-[15px] font-medium transition-colors duration-200",
+          active ? "" : "text-[#8E95A3]",
         ].join(" ")}
-        style={active ? { backgroundColor: '#38BDF8', color: '#080912' } : undefined}
-      >
-        {number}
-      </span>
-      <span
-        className={[
-          "font-[family-name:var(--font-inter)] text-sm font-medium",
-          "transition-colors duration-200 ease-out",
-          active ? "text-[#0A0A0A]" : "text-[#6B6B6B]",
-        ].join(" ")}
+        style={active ? { color: '#0EA5E9' } : undefined}
       >
         {label}
       </span>
