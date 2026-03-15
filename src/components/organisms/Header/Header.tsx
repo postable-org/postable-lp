@@ -49,11 +49,11 @@ export const Header = () => {
     >
       <div className="max-w-7xl mx-auto px-4 flex items-center justify-between">
         {/* Desktop layout */}
-        <div className="hidden md:flex items-center justify-between w-full">
+        <div className="hidden md:flex items-center justify-between w-full relative">
           {/* Logo */}
           <Link 
             href="/" 
-            className="flex items-center font-stratford text-2xl text-[#0A0A0A] transition-opacity"
+            className="flex items-center font-stratford text-2xl text-[#0A0A0A] transition-opacity gap-2"
             onClick={(e) => handleNavClick(e as React.MouseEvent<HTMLAnchorElement>, '/')}
           >
             <Image src="/logo.png" alt="Postable Logo" width={40} height={40} className="w-10 h-10 object-contain" />
@@ -63,7 +63,7 @@ export const Header = () => {
           {/* Floating nav pill */}
           <nav
             aria-label={t("header.navLabel") || "Navegação principal"}
-            className="flex items-center gap-6 border border-[#E0E0E0] rounded-full px-6 py-2 bg-white/90"
+            className="absolute left-1/2 -translate-x-1/2 flex items-center gap-6 border border-[#E0E0E0] rounded-full px-6 py-2 bg-white/90"
           >
             {NAV_LINKS.map((link) => (
               <NavItem key={link.href} href={link.href} onClick={(e) => handleNavClick(e as React.MouseEvent<HTMLAnchorElement>, link.href)}>
@@ -85,7 +85,7 @@ export const Header = () => {
               variant="primary"
               size="sm"
               className="!border-none !rounded-full hover:opacity-90"
-            style={{ background: 'linear-gradient(135deg, #38BDF8, #0EA5E9)', color: '#080912', boxShadow: '0 2px 12px rgba(56,189,248,0.35)' } as React.CSSProperties}
+            style={{ background: 'linear-gradient(to right, #0EA5E9, #38BDF8)', color: '#080912', boxShadow: '0 2px 12px rgba(56,189,248,0.35)' } as React.CSSProperties}
             >
               {t("header.cta")}
             </Button>
@@ -144,7 +144,7 @@ export const Header = () => {
               >
                 {t("header.login")}
               </a>
-              <Button variant="primary" size="sm" onClick={closeDrawer} className="w-full !border-none !rounded-full hover:opacity-90" style={{ background: 'linear-gradient(135deg, #38BDF8, #0EA5E9)', color: '#080912' } as React.CSSProperties}>
+              <Button variant="primary" size="sm" onClick={closeDrawer} className="w-full !border-none !rounded-full hover:opacity-90" style={{ background: 'linear-gradient(to right, #0EA5E9, #38BDF8)', color: '#080912' } as React.CSSProperties}>
                 {t("header.cta")}
               </Button>
             </div>

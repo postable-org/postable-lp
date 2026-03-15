@@ -138,7 +138,7 @@ export const PricingSection = () => {
           {/* Billing toggle */}
           <div className="flex items-center gap-3 mt-2">
             <div
-              className="relative flex items-center p-1 rounded-full"
+              className="relative flex items-center p-1 rounded-full w-[280px]"
               style={{
                 background: 'rgba(255,255,255,0.05)',
                 border: '1px solid rgba(255,255,255,0.1)',
@@ -146,19 +146,24 @@ export const PricingSection = () => {
               role="group"
               aria-label="Billing interval"
             >
+              {/* Sliding background */}
+              <div
+                className="absolute top-1 bottom-1 rounded-full transition-transform duration-300 ease-in-out"
+                style={{
+                  width: 'calc(50% - 4px)',
+                  transform: billingInterval === 'monthly' ? 'translateX(0)' : 'translateX(100%)',
+                  background: 'linear-gradient(135deg, #38BDF8, #0EA5E9)',
+                  boxShadow: '0 0 20px rgba(56,189,248,0.3)',
+                }}
+              />
+              
               {(['monthly', 'annual'] as BillingInterval[]).map((interval) => (
                 <button
                   key={interval}
                   onClick={() => setBillingInterval(interval)}
-                  className="relative px-5 py-2 rounded-full text-sm font-medium transition-all duration-250 focus:outline-none"
+                  className="relative z-10 flex-1 py-2 rounded-full text-sm font-medium transition-colors duration-300 focus:outline-none text-center"
                   style={{
                     color: billingInterval === interval ? '#080912' : 'rgba(255,255,255,0.5)',
-                    background: billingInterval === interval
-                      ? 'linear-gradient(135deg, #38BDF8, #0EA5E9)'
-                      : 'transparent',
-                    boxShadow: billingInterval === interval
-                      ? '0 0 20px rgba(56,189,248,0.3)'
-                      : 'none',
                   }}
                 >
                   {interval === 'monthly' ? t('pricing.billingMonthly') : t('pricing.billingAnnual')}
@@ -240,27 +245,37 @@ export const PricingSection = () => {
                       {plan.name}
                     </p>
 
-                    <div className="flex items-baseline gap-1 mb-3">
+                    <div className="flex flex-col mb-3">
                       {billingInterval === 'annual' && (
                         <span
-                          className="font-heading font-bold text-2xl line-through mr-1"
+                          className="font-heading font-bold text-xl line-through mb-1"
                           style={{ color: 'rgba(255,255,255,0.3)' }}
                         >
                           R$ {plan.monthlyPrice}
                         </span>
                       )}
-                      <span
-                        className="font-heading font-black text-5xl"
-                        style={{ color: '#38BDF8' }}
-                      >
-                        R$ {getPrice(plan)}
-                      </span>
-                      <span
-                        className="text-sm font-medium"
-                        style={{ color: 'rgba(255,255,255,0.4)' }}
-                      >
-                        {t('pricing.perMonth')}
-                      </span>
+                      <div className="flex items-baseline gap-1">
+                        <span
+                          className="font-heading font-black text-5xl"
+                          style={{ color: '#38BDF8' }}
+                        >
+                          R$ {getPrice(plan)}
+                        </span>
+                        <span
+                          className="text-sm font-medium"
+                          style={{ color: 'rgba(255,255,255,0.4)' }}
+                        >
+                          {t('pricing.perMonth')}
+                        </span>
+                      </div>
+                      {billingInterval === 'annual' && (
+                        <span
+                          className="text-xs mt-1"
+                          style={{ color: 'rgba(255,255,255,0.4)' }}
+                        >
+                          R$ {plan.annualPrice * 12} {t('pricing.billedAnnually')}
+                        </span>
+                      )}
                     </div>
 
                     <p
@@ -339,27 +354,37 @@ export const PricingSection = () => {
                     {plan.name}
                   </p>
 
-                  <div className="flex items-baseline gap-1 mb-3">
+                  <div className="flex flex-col mb-3">
                     {billingInterval === 'annual' && (
                       <span
-                        className="font-heading font-bold text-2xl line-through mr-1"
+                        className="font-heading font-bold text-xl line-through mb-1"
                         style={{ color: 'rgba(255,255,255,0.2)' }}
                       >
                         R$ {plan.monthlyPrice}
                       </span>
                     )}
-                    <span
-                      className="font-heading font-black text-5xl"
-                      style={{ color: '#ffffff' }}
-                    >
-                      R$ {getPrice(plan)}
-                    </span>
-                    <span
-                      className="text-sm font-medium"
-                      style={{ color: 'rgba(255,255,255,0.35)' }}
-                    >
-                      {t('pricing.perMonth')}
-                    </span>
+                    <div className="flex items-baseline gap-1">
+                      <span
+                        className="font-heading font-black text-5xl"
+                        style={{ color: '#ffffff' }}
+                      >
+                        R$ {getPrice(plan)}
+                      </span>
+                      <span
+                        className="text-sm font-medium"
+                        style={{ color: 'rgba(255,255,255,0.35)' }}
+                      >
+                        {t('pricing.perMonth')}
+                      </span>
+                    </div>
+                    {billingInterval === 'annual' && (
+                      <span
+                        className="text-xs mt-1"
+                        style={{ color: 'rgba(255,255,255,0.35)' }}
+                      >
+                        R$ {plan.annualPrice * 12} {t('pricing.billedAnnually')}
+                      </span>
+                    )}
                   </div>
 
                   <p

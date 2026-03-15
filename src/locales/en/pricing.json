@@ -6,14 +6,15 @@
   "discount": "−20%",
   "trialBadge": "Free 7 days",
   "perMonth": "/mo",
+  "billedAnnually": "billed annually",
   "ctaButton": "Start Free Trial",
   "disclaimer": "Cancel anytime",
   "plans": [
     {
       "name": "Basic",
-      "posts": "20 posts/mo",
+      "posts": "10 posts/mo",
       "features": [
-        "Up to 20 posts per month",
+        "Up to 10 posts per month",
         "Basic scheduling",
         "Simple reports",
         "Email support"
@@ -21,9 +22,9 @@
     },
     {
       "name": "Advanced",
-      "posts": "50 posts/mo",
+      "posts": "25 posts/mo",
       "features": [
-        "Up to 50 posts per month",
+        "Up to 25 posts per month",
         "Advanced scheduling",
         "Social media integrations",
         "Detailed analytics",
@@ -32,9 +33,9 @@
     },
     {
       "name": "Agency",
-      "posts": "Unlimited",
+      "posts": "60 posts/mo",
       "features": [
-        "Unlimited posts",
+        "Up to 60 posts per month",
         "Multiple accounts",
         "Full integrations",
         "Advanced analytics",

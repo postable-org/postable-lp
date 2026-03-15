@@ -6,14 +6,15 @@
   "discount": "−20%",
   "trialBadge": "7 dias grátis",
   "perMonth": "/mês",
+  "billedAnnually": "faturado anualmente",
   "ctaButton": "Começar teste grátis",
   "disclaimer": "Cancele quando quiser",
   "plans": [
     {
       "name": "Básico",
-      "posts": "20 posts/mês",
+      "posts": "10 posts/mês",
       "features": [
-        "Até 20 posts por mês",
+        "Até 10 posts por mês",
         "Agendamento básico",
         "Relatórios simples",
         "Suporte por email"
@@ -21,9 +22,9 @@
     },
     {
       "name": "Avançado",
-      "posts": "50 posts/mês",
+      "posts": "25 posts/mês",
       "features": [
-        "Até 50 posts por mês",
+        "Até 25 posts por mês",
         "Agendamento avançado",
         "Integrações com redes sociais",
         "Análises detalhadas",
@@ -32,9 +33,9 @@
     },
     {
       "name": "Agência",
-      "posts": "Ilimitado",
+      "posts": "60 posts/mês",
       "features": [
-        "Posts ilimitados",
+        "Até 60 posts por mês",
         "Múltiplas contas",
         "Integrações completas",
         "Análises avançadas",
